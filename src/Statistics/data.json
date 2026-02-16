@@ -1,0 +1,362 @@
+[
+  {
+    "label": "Composite Stock Price Index & Stock Trading Volume",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/highlights/composite-stock-price-index?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/highlights/composite-stock-price-index?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "IDX Indices Highlight",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/highlights/idx-indices-highlight?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/highlights/idx-indices-highlight?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Statistical Highlight",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/highlights/statistical-highlight?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/highlights/statistical-highlight?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Daily IDX Indices",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/stock-price-index/daily-idx-indices?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/stock-price-index/daily-idx-indices?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Jakarta Composite Index and Sectoral Indices Movement",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/stock-price-index/jakarta-composite-index-and-sectoral-indices-movement?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/stock-price-index/jakarta-composite-index-and-sectoral-indices-movement?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "IDX Indices (12 Month Chart)",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/stock-price-index/idx-indices-12-month-chart?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/stock-price-index/idx-indices-12-month-chart?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Table Daily Trading by Type of Investor",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-investor/table-daily-trading-by-type-of-investor?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-investor/table-daily-trading-by-type-of-investor?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Daily Trading Chart by Type of Investor",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-investor/daily-trading-chart-by-type-of-investor?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-investor/daily-trading-chart-by-type-of-investor?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Total Trading by Investor's Type and Net Purchase by Foreigners",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-investor/total-trading-by-investor-s-type-and-net-purchase-by-foreigners?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-investor/total-trading-by-investor-s-type-and-net-purchase-by-foreigners?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Daily Stock Trading by Type of Market",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-market/daily-stock-trading-by-type-of-market?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-market/daily-stock-trading-by-type-of-market?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Trading Volume and Value by Market Type",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-market/trading-volume-and-value-by-market-type?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-market/trading-volume-and-value-by-market-type?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Daily Rights Certificate, Warrant, ETF, REIT, DINFRA, Futures Trading",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-securities/daily-rights-certificate-warrant-etf-reit-dinfra-futures-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-securities/daily-rights-certificate-warrant-etf-reit-dinfra-futures-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Trading Summary by Industry Classification",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-industry/trading-summary-by-industry-classification?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-industry/trading-summary-by-industry-classification?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Trading Value by Industry",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-industry/trading-value-by-industry?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-industry/trading-value-by-industry?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Number of Listed Shares by Industry",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-industry/number-of-listed-shares-by-industry?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/equity-trading-by-industry/number-of-listed-shares-by-industry?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "50 Biggest Market Capitalization",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/biggest-market-capitalization-most-active-stocks/biggest-market-capitalization?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/biggest-market-capitalization-most-active-stocks/biggest-market-capitalization?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "20 Most Active Stocks by Total Trading Volume",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/biggest-market-capitalization-most-active-stocks/most-active-stocks-by-total-trading-volume?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/biggest-market-capitalization-most-active-stocks/most-active-stocks-by-total-trading-volume?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "20 Most Active Stocks by Total Trading Value",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/biggest-market-capitalization-most-active-stocks/most-active-stocks-by-total-trading-value?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/biggest-market-capitalization-most-active-stocks/most-active-stocks-by-total-trading-value?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "20 Most Active Stocks by Total Trading Frequency",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/biggest-market-capitalization-most-active-stocks/most-active-stocks-by-total-trading-frequency?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/biggest-market-capitalization-most-active-stocks/most-active-stocks-by-total-trading-frequency?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Top 20 Gainer and Loser Stocks",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/biggest-market-capitalization-most-active-stocks/top-gainer-and-loser-stocks?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/biggest-market-capitalization-most-active-stocks/top-gainer-and-loser-stocks?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "20 Most Active Brokerage Houses by Total Value",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/most-active-brokerage/most-active-brokerage-houses-by-total-value?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/most-active-brokerage/most-active-brokerage-houses-by-total-value?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "20 Most Active Brokerage Houses by Total Frequency",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/most-active-brokerage/most-active-brokerage-houses-by-total-frequency?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/most-active-brokerage/most-active-brokerage-houses-by-total-frequency?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "20 Most Active Stocks by Total Trading Value (YTD)",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/most-active-stocks-by-total-trading-value-ytd?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/most-active-stocks-by-total-trading-value-ytd?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "20 Most Active Brokerage Houses by Total Trading Value (YTD)",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/most-active-brokerage-houses-by-total-trading-value-ytd?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/most-active-brokerage-houses-by-total-trading-value-ytd?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Table of Stock Price",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/table-of-stock-price?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/table-of-stock-price?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Table of Stock Trading",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/table-of-stock-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/table-of-stock-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Table of Trading Industry",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/table-of-trading-industry?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/table-of-trading-industry?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Warrant Trading",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/warrant-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/warrant-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "ETF Trading",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/etf-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/etf-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "DINFRA Trading",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/dinfra-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/dinfra-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "REIT Trading",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/reit-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/reit-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Futures Trading",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/futures-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/futures-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Right Trading",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/right-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/trading-summary/right-trading?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Financial Data and Ratio",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/financial-report-and-ratio-of-listed-companies/financial-data-and-ratio?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/financial-report-and-ratio-of-listed-companies/financial-data-and-ratio?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Summary Financial Ratio by Industry",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/financial-report-and-ratio-of-listed-companies/summary-financial-ratio-by-industry?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/financial-report-and-ratio-of-listed-companies/summary-financial-ratio-by-industry?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Stock New Listings",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-listed-companies/stock-new-listings?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-listed-companies/stock-new-listings?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Delisted Company",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-listed-companies/delisted-company?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-listed-companies/delisted-company?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Right Offerings",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-listed-companies/right-offerings?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-listed-companies/right-offerings?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Stock Splits and Reverse Stocks",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-listed-companies/stock-splits-and-reverse-stocks?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-listed-companies/stock-splits-and-reverse-stocks?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Additional Listed Shares",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-listed-companies/additional-listed-shares?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-listed-companies/additional-listed-shares?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Dividend Announcement",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-listed-companies/dividend-announcement?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-listed-companies/dividend-announcement?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "IDX Members Stock Transaction",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-members-activity/idx-members-stock-transaction?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-members-activity/idx-members-stock-transaction?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "IDX Members (Brokerage Firms) ETF Transaction",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-members-activity/idx-members-etf-transaction?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-members-activity/idx-members-etf-transaction?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "IDX Members (Brokerage Firms) Warrant Transaction",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-members-activity/idx-members-warrant-transaction?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-members-activity/idx-members-warrant-transaction?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "IDX Members (Brokerage Firms) REIT Transaction",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-members-activity/idx-members-reit-transaction?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-members-activity/idx-members-reit-transaction?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "IDX Members (Brokerage Firms) Rights Transaction",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-members-activity/idx-members-rights-transaction?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-members-activity/idx-members-rights-transaction?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Indonesia Stock Exchange Activities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/indonesia-stock-exchange-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/indonesia-stock-exchange-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Exchange Traded Fund (ETF) Activities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/etf-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/etf-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Real Estate Investment Trust (REIT) Activities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/reit-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/reit-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Futures Trading Activities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/futures-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/futures-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "DINFRA Activities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/dinfra-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/dinfra-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Corporate Bond Activities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/corporate-bond-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/corporate-bond-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Government Bond Activities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/government-bond-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/government-bond-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Asset Backed Securities Activities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/asset-backed-securities-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/asset-backed-securities-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Average Daily Trading Value All Instrument Activities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/average-daily-trading-value-all-instrument-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/idx-trading-activities/average-daily-trading-value-all-instrument-activities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Listing Summaries and Trading of Corporate Securities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/bond-listing-trading-summaries/listing-summaries-and-trading-of-corporate-securities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/bond-listing-trading-summaries/listing-summaries-and-trading-of-corporate-securities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Listing Summaries and Trading of Government Securities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/bond-listing-trading-summaries/listing-summaries-and-trading-of-government-securities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/bond-listing-trading-summaries/listing-summaries-and-trading-of-government-securities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Listing Summaries and Trading of Asset Backed Securities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/bond-listing-trading-summaries/listing-summaries-and-trading-of-abs?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/bond-listing-trading-summaries/listing-summaries-and-trading-of-abs?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "New Issues of Corporate Securities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/bond-new-issues/new-issues-of-corporate-securities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/bond-new-issues/new-issues-of-corporate-securities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "New Issues of Government Securities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/bond-new-issues/new-issues-of-government-securities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/bond-new-issues/new-issues-of-government-securities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Corporate Action of Government Bonds",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-bonds-market/corporate-action-of-government-bonds?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-bonds-market/corporate-action-of-government-bonds?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Corporate Action of Corporate Bonds and ABS",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-bonds-market/corporate-action-of-corporate-bonds-and-abs?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/corporate-action-of-bonds-market/corporate-action-of-corporate-bonds-and-abs?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "List of Government Bonds",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/list-of-government-bond-corporate-bond-sukuk-abs-issues/list-of-government-bonds?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/list-of-government-bond-corporate-bond-sukuk-abs-issues/list-of-government-bonds?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "List Summary of Trading Government Bond",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/list-of-government-bond-corporate-bond-sukuk-abs-issues/list-summary-of-trading-government-bond?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/list-of-government-bond-corporate-bond-sukuk-abs-issues/list-summary-of-trading-government-bond?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Corporate Bonds and Sukuk Issues",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/list-of-government-bond-corporate-bond-sukuk-abs-issues/corporate-bonds-and-sukuk-issues?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/list-of-government-bond-corporate-bond-sukuk-abs-issues/corporate-bonds-and-sukuk-issues?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Summary of Corporate Bonds and Sukuk Issues by Industry",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/list-of-government-bond-corporate-bond-sukuk-abs-issues/summary-of-corpbonds-by-industry?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/list-of-government-bond-corporate-bond-sukuk-abs-issues/summary-of-corpbonds-by-industry?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "List of Asset Backed Securities",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/list-of-government-bond-corporate-bond-sukuk-abs-issues/list-of-asset-backed-securities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/list-of-government-bond-corporate-bond-sukuk-abs-issues/list-of-asset-backed-securities?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "Daily Activity Report of Bonds, Sukuk, and ABS",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/bond-daily-trading-activity/daily-activity-report-of-bonds-sukuk-and-abs?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/bond-daily-trading-activity/daily-activity-report-of-bonds-sukuk-and-abs?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "50 Most Active Government Bonds by Volume",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/most-active-bonds/most-active-government-bonds-by-volume?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/most-active-bonds/most-active-government-bonds-by-volume?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "50 Most Active Government Bonds by Frequency",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/most-active-bonds/most-active-government-bonds-by-frequency?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/most-active-bonds/most-active-government-bonds-by-frequency?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "50 Most Active Corporate Bonds by Volume",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/most-active-bonds/most-active-corporate-bonds-by-volume?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/most-active-bonds/most-active-corporate-bonds-by-volume?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  },
+  {
+    "label": "50 Most Active Corporate Bonds by Frequency",
+    "webUrl": "https://www.idx.co.id/id/data-pasar/laporan-statistik/digital-statistic/monthly/most-active-bonds/most-active-corporate-bonds-by-frequency?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D",
+    "apiUrl": "https://www.idx.co.id/primary/page/id/data-pasar/laporan-statistik/digital-statistic/monthly/most-active-bonds/most-active-corporate-bonds-by-frequency?filter=eyJ5ZWFyIjoiMjAyNiIsIm1vbnRoIjoiMSIsInF1YXJ0ZXIiOjAsInR5cGUiOiJtb250aGx5In0%3D"
+  }
+]

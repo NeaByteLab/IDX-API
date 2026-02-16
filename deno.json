@@ -1,0 +1,105 @@
+{
+  "name": "@neabyte/idx-api",
+  "type": "module",
+  "license": "PROPRIETARY",
+  "exports": "./src/index.ts",
+  "compilerOptions": {
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "checkJs": false,
+    "exactOptionalPropertyTypes": true,
+    "jsx": "react",
+    "lib": ["deno.ns", "dom", "esnext"],
+    "noErrorTruncation": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "useUnknownInCatchVariables": true
+  },
+  "fmt": {
+    "bracePosition": "sameLine",
+    "indentWidth": 2,
+    "lineWidth": 100,
+    "proseWrap": "preserve",
+    "semiColons": false,
+    "singleBodyPosition": "nextLine",
+    "singleQuote": true,
+    "spaceAround": false,
+    "spaceSurroundingProperties": true,
+    "trailingCommas": "never",
+    "useBraces": "always",
+    "useTabs": false
+  },
+  "lint": {
+    "include": ["src/"],
+    "rules": {
+      "tags": ["fresh", "jsr", "jsx", "react", "recommended", "workspace"],
+      "include": [
+        "ban-untagged-todo",
+        "camelcase",
+        "default-param-last",
+        "eqeqeq",
+        "explicit-function-return-type",
+        "explicit-module-boundary-types",
+        "guard-for-in",
+        "no-await-in-loop",
+        "no-boolean-literal-for-arguments",
+        "no-const-assign",
+        "no-eval",
+        "no-implicit-declare-namespace-export",
+        "no-inferrable-types",
+        "no-invalid-triple-slash-reference",
+        "no-non-null-asserted-optional-chain",
+        "no-non-null-assertion",
+        "no-self-compare",
+        "no-sparse-arrays",
+        "no-sync-fn-in-async-fn",
+        "no-throw-literal",
+        "no-undef",
+        "no-useless-rename",
+        "no-top-level-await",
+        "single-var-declarator"
+      ],
+      "exclude": ["no-console", "no-external-import", "prefer-ascii", "prefer-primordials"]
+    }
+  },
+  "lock": true,
+  "nodeModulesDir": "none",
+  "test": {
+    "include": ["tests/**/*.ts"],
+    "exclude": ["tests/**/*.d.ts"]
+  },
+  "tasks": {
+    "check": "deno fmt src/ && deno lint src/ && deno check src/",
+    "discover": "deno run --allow-net --allow-read --allow-write src/index.ts",
+    "test": "deno fmt tests/ && deno lint tests/ && deno test --allow-net --allow-write --allow-read --no-check"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@^1.0.18",
+    "@app/": "./src/",
+    "@tests": "./tests/"
+  },
+  "publish": {
+    "exclude": [
+      "*.bench.ts",
+      "*.spec.ts",
+      "*.test.ts",
+      ".github/",
+      "bench/",
+      "build.config.ts",
+      "coverage/",
+      "tests/"
+    ]
+  }
+}
