@@ -22,7 +22,7 @@ const runDiscovery = async () => {
 
 /**
  * IDX API Facade.
- * @description Centralized access to all IDX data modules.
+ * @description Access point for IDX data modules.
  */
 export default class IDXClient {
   /** Company and securities data */
@@ -36,7 +36,7 @@ export default class IDXClient {
 
   /**
    * Initialize all domain modules.
-   * @description Creates instances for specialized data services.
+   * @description Creates instances for core data services.
    */
   constructor() {
     this.company = new CompanyModule()

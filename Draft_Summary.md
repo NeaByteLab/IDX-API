@@ -2,7 +2,7 @@
 
 ## Overview
 
-**IDX-API** adalah sebuah _powerhouse_ data scraping dan API wrapper yang dibangun dengan **Deno** dan **TypeScript**. Dikembangkan dengan arsitektur modular, project ini mampu menembus data internal Bursa Efek Indonesia (IDX) yang biasanya tertutup untuk publik, memberikan akses _real-time_ dan _deep-data_ untuk analisis pasar modal.
+**IDX-API** adalah sebuah _data bridge_ dan API wrapper yang dibangun dengan **Deno** dan **TypeScript**. Dikembangkan dengan arsitektur modular, project ini memberikan akses data internal Bursa Efek Indonesia (IDX) untuk analisis pasar modal.
 
 ---
 
@@ -29,7 +29,7 @@ Modul untuk melihat pergerakan pasar secara makro.
 
 ### 3. `trading` (Market Activities & Bandarmologi Support)
 
-Modul paling "berbahaya" untuk analisis aliran dana (_money flow_).
+Modul utama untuk analisis aliran dana (_money flow_).
 
 - **`getBrokerSummary()`**: API kunci untuk **Bandarmologi**. Melacak transaksi jual-beli broker tertentu pada tanggal spesifik.
 - **`getStockSummary()`**: Ringkasan performa harga seluruh saham (Open, High, Low, Close, Volume).
@@ -49,7 +49,7 @@ Analisis pada `Draft_Statistic_API.md` menunjukkan potensi fitur tambahan yang d
 
 #### TIER 1: Market Intelligence & Money Flow (High Priority)
 
-_Sangat krusial untuk mendeteksi pergerakan "Big Money" secara harian._
+_Digunakan untuk memantau pergerakan transaksi harian._
 
 - **Investor Type Analysis:** Monitoring detail akumulasi/distribusi Asing vs Domestik (Net Buy/Sell).
 - **Top 50 Leaderboards:** Daftar 50 saham paling aktif (Volume, Value, Freq) & Biggest Market Cap secara _real-time_.
@@ -63,7 +63,7 @@ _Membantu strategi rotasi sektor dan pemilihan saham secara spesifik._
 - **Stock Price & Trading Tables:** Data harga penutupan dan volume perdagangan kolektif untuk seluruh emiten.
 - **Index Movement Highlights:** Ringkasan pergerakan IHSG vs Indeks Sektoral secara mendalam.
 
-#### TIER 3: Specialized Instruments (Advanced/Niche)
+#### TIER 3: Specialized Instruments (Specialized/Niche)
 
 _Untuk investor yang ingin diversifikasi ke instrumen di luar saham biasa._
 

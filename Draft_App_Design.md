@@ -37,7 +37,7 @@ Sidebar dirancang untuk memudahkan navigasi berdasarkan profil strategi investor
 
 - **Live Stock Summary:** Pergerakan harga saham real-time.
   - _API: `trading.getStockSummary(date)`_
-- **Advanced Screener:** Filter saham berdasarkan sektor, papan, dan likuiditas.
+- **General Screener:** Filter saham berdasarkan sektor, papan, dan likuiditas.
   - _API: `company.getSecuritiesStock(start, length, code, sector, board)`_
 - **Historical Chart:** Analisis teknikal pergerakan harga.
   - _API: `market.getIndexChart(indexCode, period)`_
@@ -89,7 +89,7 @@ _Fokus: Analisis bandarmologi yang jadi nilai jual utama._
 - [ ] **Broker Transaction Summary:** Tabel detail transaksi broker (Top Buyers/Sellers).
 - [ ] **Dividend Yield Tracker:** Kalkulator potensi dividen berdasarkan harga saat ini.
 
-### Phase 3: The Intelligence (AI & Advanced Analytics)
+### Phase 3: The Intelligence (AI & Data Analytics)
 
 _Fokus: Otomatisasi analisis._
 
@@ -99,4 +99,4 @@ _Fokus: Otomatisasi analisis._
 
 ---
 
-**LFG! Struktur ini bikin aplikasi lo setara dengan platform profesional tapi lebih berorientasi pada data "Deep-IDX".**
+**LFG! Struktur ini dirancang untuk menyediakan data "Deep-IDX" yang terorganisir.**

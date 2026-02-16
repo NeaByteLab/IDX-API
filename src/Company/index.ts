@@ -9,7 +9,6 @@ export default class CompanyModule extends BaseClient {
   /**
    * Fetch news announcements.
    * @description Returns latest company announcements.
-   * @param pageSize - Record count per page
    * @param indexFrom - Pagination start index
    * @param language - Language code (id-id)
    * @returns Company announcement response data
@@ -131,7 +130,7 @@ export default class CompanyModule extends BaseClient {
    * @param code - Optional ticker code filter
    * @param sector - Optional sector filter
    * @param board - Optional board category filter
-   * @returns Comprehensive securities response data
+   * @returns Securities response data
    */
   async getSecuritiesStock(
     start = 0,
