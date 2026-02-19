@@ -7,21 +7,28 @@ import BaseClient from '@app/Client.ts'
  */
 export default class CompanyModule extends BaseClient {
   /**
-   * Fetch news announcements.
-   * @description Returns latest company announcements.
+   * Fetch company news announcements.
+   * @description Returns filtered IDX announcements data.
+   * @param companyCode - Company ticker filter
+   * @param pageSize - Record count limit
    * @param indexFrom - Pagination start index
-   * @param language - Language code (id-id)
-   * @returns Company announcement response data
+   * @param dateFrom - Start date YYYYMMDD
+   * @param dateTo - End date YYYYMMDD
+   * @param language - Language code (id/en)
+   * @returns Announcement response data
    */
   async getAnnouncements(
+    companyCode = '',
     pageSize = 9999,
     indexFrom = 0,
-    language = 'id-id'
+    dateFrom = '',
+    dateTo = '',
+    language = 'id'
   ): Promise<Types.AnnouncementResponse | null> {
     await this.ensureSession()
     try {
       const url =
-        `https://www.idx.co.id/primary/ListedCompany/GetAnnouncement?pageSize=${pageSize}&indexFrom=${indexFrom}&language=${language}`
+        `https://www.idx.co.id/primary/ListedCompany/GetAnnouncement?kodeEmiten=${companyCode}&indexFrom=${indexFrom}&pageSize=${pageSize}&dateFrom=${dateFrom}&dateTo=${dateTo}&lang=${language}`
       const response = await fetch(url, {
         headers: {
           ...this.browserHeaders,
@@ -78,6 +85,148 @@ export default class CompanyModule extends BaseClient {
           })
         ),
         recordsTotal: rawResponse.ResultCount
+      }
+    } catch {
+      return null
+    }
+  }
+
+  /**
+   * Fetch company profiles.
+   * @description Returns list of basic company profile information.
+   * @param start - Starting record index
+   * @param length - Maximum record count
+   * @returns Company profile response data
+   */
+  async getCompanyProfiles(start = 0, length = 9999): Promise<Types.CompanyProfileResponse | null> {
+    await this.ensureSession()
+    try {
+      const url =
+        `https://www.idx.co.id/primary/ListedCompany/GetCompanyProfiles?start=${start}&length=${length}`
+      const response = await fetch(url, {
+        headers: {
+          ...this.browserHeaders,
+          'X-Requested-With': 'XMLHttpRequest',
+          Cookie: this.sessionCookie
+        }
+      })
+      const rawResponse = await response.json()
+      if (!rawResponse || !rawResponse.data) {
+        return null
+      }
+      return {
+        data: rawResponse.data.map(
+          (item: { KodeEmiten: string; NamaEmiten: string; TanggalPencatatan: string }) => ({
+            code: item.KodeEmiten,
+            name: item.NamaEmiten,
+            listingDate: item.TanggalPencatatan
+          })
+        ),
+        recordsTotal: rawResponse.recordsTotal
+      }
+    } catch {
+      return null
+    }
+  }
+
+  /**
+   * Fetch detailed company profile.
+   * @description Returns exhaustive metadata for a specific company ticker.
+   * @param companyCode - Company ticker code (e.g., BBCA)
+   * @param language - Language code (id-id)
+   * @returns Detailed company profile response data
+   */
+  async getCompanyProfilesDetail(
+    companyCode: string,
+    language = 'id-id'
+  ): Promise<Types.CompanyDetailResponse | null> {
+    await this.ensureSession()
+    try {
+      const url =
+        `https://www.idx.co.id/primary/ListedCompany/GetCompanyProfilesDetail?KodeEmiten=${companyCode}&language=${language}`
+      const response = await fetch(url, {
+        headers: {
+          ...this.browserHeaders,
+          'X-Requested-With': 'XMLHttpRequest',
+          Cookie: this.sessionCookie
+        }
+      })
+      const rawResponse = await response.json()
+      if (!rawResponse || !rawResponse.Profiles || rawResponse.Profiles.length === 0) {
+        return null
+      }
+      const profile = rawResponse.Profiles[0]
+      return {
+        profile: {
+          address: profile.Alamat,
+          bae: profile.BAE,
+          industry: profile.Industri,
+          subIndustri: profile.SubIndustri,
+          email: profile.Email,
+          fax: profile.Fax,
+          businessActivity: profile.KegiatanUsahaUtama,
+          code: profile.KodeEmiten,
+          name: profile.NamaEmiten,
+          phone: profile.Telepon,
+          website: profile.Website,
+          npwp: profile.NPWP,
+          history: profile.SejarahPencatatan,
+          listingDate: profile.TanggalPencatatan,
+          board: profile.PapanPencatatan,
+          sector: profile.Sektor,
+          subSector: profile.SubSektor,
+          status: profile.Status
+        },
+        secretary: (rawResponse.Sekretaris || []).map(
+          (item: { Nama: string; Email: string; Telepon: string }) => ({
+            name: item.Nama,
+            email: item.Email,
+            phone: item.Telepon
+          })
+        ),
+        directors: (rawResponse.Direktur || []).map((item: { Nama: string; Jabatan: string }) => ({
+          name: item.Nama,
+          position: item.Jabatan
+        })),
+        commissioners: (rawResponse.Komisaris || []).map(
+          (item: { Nama: string; Jabatan: string }) => ({
+            name: item.Nama,
+            position: item.Jabatan
+          })
+        ),
+        committees: (rawResponse.Komite || []).map(
+          (item: { Nama: string; Jabatan: string; JabatanLain: string }) => ({
+            name: item.Nama,
+            position: item.Jabatan,
+            type: item.JabatanLain
+          })
+        ),
+        shareholders: (rawResponse.PemegangSaham || []).map(
+          (item: { Nama: string; Jumlah: number; Persentase: number }) => ({
+            name: item.Nama,
+            count: item.Jumlah,
+            percentage: item.Persentase
+          })
+        ),
+        subsidiaries: (rawResponse.AnakPerusahaan || []).map(
+          (item: {
+            Nama: string
+            JenisUsaha: string
+            Lokasi: string
+            Status: string
+            Persentase: number
+            TotalAset: number
+            Satuan: string
+          }) => ({
+            name: item.Nama,
+            type: item.JenisUsaha,
+            location: item.Lokasi,
+            status: item.Status,
+            percentage: item.Persentase,
+            totalAssets: item.TotalAset,
+            unit: item.Satuan
+          })
+        )
       }
     } catch {
       return null

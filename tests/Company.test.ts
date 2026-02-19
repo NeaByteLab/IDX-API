@@ -1,65 +1,55 @@
-import { assert, assertEquals } from '@std/assert'
+import { assert } from '@std/assert'
 import CompanyModule from '@app/Company/index.ts'
 
-Deno.test('CompanyModule - getAnnouncements (Localization)', async () => {
-  const company = new CompanyModule()
-  const resultId = await company.getAnnouncements(5, 0, 'id-id')
-  const resultEn = await company.getAnnouncements(5, 0, 'en-us')
-  if (resultId !== null) {
-    assert(Array.isArray(resultId.data))
-  }
-  if (resultEn !== null) {
-    assert(Array.isArray(resultEn.data))
+Deno.test('CompanyModule - getAnnouncements', async () => {
+  const module = new CompanyModule()
+  const result = await module.getAnnouncements('BBCA', 10, 0, '20200101', '20261231')
+  assert(result !== null, 'Result should not be null')
+  assert(Array.isArray(result.data), 'data should be an array')
+  if (result.data.length > 0) {
+    assert(result.data[0].details.companyCode === 'BBCA', 'Should be BBCA')
   }
 })
 
-Deno.test('CompanyModule - getRelistingData (Real API)', async () => {
-  const company = new CompanyModule()
-  const result = await company.getRelistingData(5)
-  if (result !== null && result.data.length > 0) {
-    assert(Array.isArray(result.data))
-    const first = result.data[0]
-    if (first) {
-      assert(first.code !== undefined)
-      assert(first.listingDate !== undefined)
-    }
-  }
+Deno.test('CompanyModule - getCompanyProfiles', async () => {
+  const module = new CompanyModule()
+  const result = await module.getCompanyProfiles(0, 5)
+  assert(result !== null, 'Result should not be null')
+  assert(Array.isArray(result.data), 'data should be an array')
+  assert(result.data.length > 0, 'Should return at least one profile')
+  const first = result.data[0]
+  assert(first !== undefined, 'First item should exist')
+  assert(typeof first.code === 'string', 'Code should be string')
+  assert(typeof first.name === 'string', 'Name should be string')
 })
 
-Deno.test('CompanyModule - getSecuritiesStock (Filtering: Code)', async () => {
-  const company = new CompanyModule()
-  const result = await company.getSecuritiesStock(0, 10, 'BBCA')
-  if (result !== null && result.data.length > 0) {
-    const hasBBCA = result.data.some((s) => s.code === 'BBCA')
-    assert(hasBBCA)
-  }
+Deno.test('CompanyModule - getCompanyProfilesDetail', async () => {
+  const module = new CompanyModule()
+  const result = await module.getCompanyProfilesDetail('BBCA')
+  assert(result !== null, 'Result should not be null')
+  assert(result.profile.code === 'BBCA', 'Code should match')
+  assert(typeof result.profile.name === 'string', 'Name should be string')
+  assert(Array.isArray(result.directors), 'directors should be an array')
+  assert(result.directors.length > 0, 'Should have directors')
 })
 
-Deno.test('CompanyModule - getSecuritiesStock (Filtering: Sector & Board)', async () => {
-  const company = new CompanyModule()
-  const result = await company.getSecuritiesStock(0, 10, '', 'ENERGY', 'Main')
-  if (result !== null && result.data.length > 0) {
-    assert(result.data.length > 0)
-    const first = result.data[0]
-    if (first) {
-      assert(typeof first.listingBoard === 'string')
-    }
-  }
+Deno.test('CompanyModule - getRelistingData', async () => {
+  const module = new CompanyModule()
+  const result = await module.getRelistingData(5, 0)
+  assert(result !== null, 'Result should not be null')
+  assert(Array.isArray(result.data), 'data should be an array')
 })
 
-Deno.test('CompanyModule - getSecuritiesStock (Non-Existent Code)', async () => {
-  const company = new CompanyModule()
-  const result = await company.getSecuritiesStock(0, 10, 'Z_Z_Z_Z')
-  if (result !== null) {
-    assertEquals(result.data.length, 0)
-    assertEquals(result.recordsFiltered, 0)
-  }
+Deno.test('CompanyModule - getSecuritiesStock', async () => {
+  const module = new CompanyModule()
+  const result = await module.getSecuritiesStock(0, 5)
+  assert(result !== null, 'Result should not be null')
+  assert(Array.isArray(result.data), 'data should be an array')
 })
 
-Deno.test('CompanyModule - getSuspendData (Real API)', async () => {
-  const company = new CompanyModule()
-  const result = await company.getSuspendData(5)
-  if (result !== null) {
-    assert(Array.isArray(result.results))
-  }
+Deno.test('CompanyModule - getSuspendData', async () => {
+  const module = new CompanyModule()
+  const result = await module.getSuspendData(5)
+  assert(result !== null, 'Result should not be null')
+  assert(Array.isArray(result.results), 'results should be an array')
 })

@@ -12,7 +12,7 @@ export async function syncStockSummary(date: string): Promise<void> {
   const trading = new TradingModule()
   const result = await trading.getStockSummary(date)
   if (result && result.length > 0) {
-    const batch = result.map((item) =>
+    const queries = result.map((item) =>
       db
         .insert(schemas.stockSummary)
         .values({
@@ -63,6 +63,6 @@ export async function syncStockSummary(date: string): Promise<void> {
           }
         })
     )
-    await Promise.all(batch)
+    await Promise.all(queries)
   }
 }

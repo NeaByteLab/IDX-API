@@ -11,7 +11,7 @@ export async function syncBrokerParticipant(): Promise<void> {
   const module = new ParticipantsModule()
   const result = await module.getBrokerSearch()
   if (result && result.length > 0) {
-    const batch = result.map((item) =>
+    const queries = result.map((item) =>
       db
         .insert(schemas.participantBroker)
         .values({
@@ -27,6 +27,6 @@ export async function syncBrokerParticipant(): Promise<void> {
           }
         })
     )
-    await Promise.all(batch)
+    await Promise.all(queries)
   }
 }

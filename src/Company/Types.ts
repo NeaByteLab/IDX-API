@@ -65,6 +65,96 @@ export interface AnnouncementResponse {
 }
 
 /**
+ * Company detailed profile response.
+ * @description Exhaustive metadata for a listed company.
+ */
+export interface CompanyDetailResponse {
+  /** Basic profile information */
+  profile: {
+    address: string
+    bae: string
+    industry: string
+    subIndustri: string
+    email: string
+    fax: string
+    businessActivity: string
+    code: string
+    name: string
+    phone: string
+    website: string
+    npwp: string
+    history: string
+    listingDate: string
+    board: string
+    sector: string
+    subSector: string
+    status: string
+  }
+  /** Company secretary information */
+  secretary: {
+    name: string
+    email: string
+    phone: string
+  }[]
+  /** Board of directors */
+  directors: {
+    name: string
+    position: string
+  }[]
+  /** Board of commissioners */
+  commissioners: {
+    name: string
+    position: string
+  }[]
+  /** Committee members */
+  committees: {
+    name: string
+    position: string
+    type: string
+  }[]
+  /** Major shareholders */
+  shareholders: {
+    name: string
+    count: number
+    percentage: number
+  }[]
+  /** Subsidiaries */
+  subsidiaries: {
+    name: string
+    type: string
+    location: string
+    status: string
+    percentage: number
+    totalAssets: number
+    unit: string
+  }[]
+}
+
+/**
+ * Company profile data.
+ * @description Defines fields for basic company identification.
+ */
+export interface CompanyProfile {
+  /** Company ticker code */
+  code: string
+  /** Company full name */
+  name: string
+  /** Listing date */
+  listingDate: string
+}
+
+/**
+ * Company profile response wrapper.
+ * @description Contains list of company profiles and total count.
+ */
+export interface CompanyProfileResponse {
+  /** List of company profiles */
+  data: CompanyProfile[]
+  /** Total records */
+  recordsTotal: number
+}
+
+/**
  * Company relisting activity data.
  * @description Defines fields for relisting event records.
  */

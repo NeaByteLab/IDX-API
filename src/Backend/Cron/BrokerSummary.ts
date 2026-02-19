@@ -12,7 +12,7 @@ export async function syncBrokerSummary(date: string): Promise<void> {
   const trading = new TradingModule()
   const result = await trading.getBrokerSummary(date)
   if (result && result.data.length > 0) {
-    const batch = result.data.map((item) =>
+    const queries = result.data.map((item) =>
       db
         .insert(schemas.brokerSummary)
         .values({
@@ -34,6 +34,6 @@ export async function syncBrokerSummary(date: string): Promise<void> {
           }
         })
     )
-    await Promise.all(batch)
+    await Promise.all(queries)
   }
 }

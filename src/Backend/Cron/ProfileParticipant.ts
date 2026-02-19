@@ -11,7 +11,7 @@ export async function syncProfileParticipant(): Promise<void> {
   const module = new ParticipantsModule()
   const result = await module.getParticipantSearch(0, 9999)
   if (result && result.data.length > 0) {
-    const batch = result.data.map((item) =>
+    const queries = result.data.map((item) =>
       db
         .insert(schemas.participantProfile)
         .values({
@@ -29,6 +29,6 @@ export async function syncProfileParticipant(): Promise<void> {
           }
         })
     )
-    await Promise.all(batch)
+    await Promise.all(queries)
   }
 }
