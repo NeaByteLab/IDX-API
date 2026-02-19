@@ -124,9 +124,9 @@ export default class MarketModule extends BaseClient {
         return null
       }
       return {
-        chartData: rawResponse.ChartData.map((point: { Date: string; Value: number }) => ({
+        chartData: rawResponse.ChartData.map((point: { Date: string; Close: number }) => ({
           date: point.Date,
-          value: point.Value
+          value: point.Close
         })),
         indexCode: rawResponse.IndexCode,
         openPrice: rawResponse.OpenPrice,

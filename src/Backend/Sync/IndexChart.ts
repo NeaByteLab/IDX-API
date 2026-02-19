@@ -10,24 +10,28 @@ import { db } from '@app/Database.ts'
  */
 export async function syncIndexChart(indexCode: string): Promise<void> {
   const market = new MarketModule()
-  const result = await market.getIndexChart(indexCode)
+  const result = await market.getIndexChart(indexCode, '1Y')
   if (result && result.chartData.length > 0) {
-    const queries = result.chartData.map((point) => {
-      const id = `${indexCode}-${new Date(point.date).getTime()}`
-      const values = {
-        id,
+    const values = result.chartData
+      .filter((point) => point.value !== null && point.value !== undefined)
+      .map((point) => ({
+        id: `${indexCode}-${new Date(point.date).getTime()}`,
         code: indexCode,
         date: new Date(point.date),
         value: point.value
-      }
-      return db
-        .insert(schemas.indexChart)
-        .values(values)
-        .onConflictDoUpdate({
-          target: schemas.indexChart.id,
-          set: { value: point.value }
-        })
-    })
-    await Promise.all(queries)
+      }))
+    if (values.length === 0) {
+      return
+    }
+    await db
+      .insert(schemas.indexChart)
+      .values(values)
+      .onConflictDoUpdate({
+        target: schemas.indexChart.id,
+        set: {
+          value: schemas.indexChart.value,
+          code: schemas.indexChart.code
+        }
+      })
   }
 }

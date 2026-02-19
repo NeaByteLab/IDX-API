@@ -33,9 +33,20 @@ export async function syncIndexList(): Promise<void> {
         })
     )
     await Promise.all(queries)
-
-    // Automatically sync chart for each index in parallel
-    const chartSyncs = result.map((item) => syncIndexChart(item.code))
-    await Promise.all(chartSyncs)
+    /**
+     * Sync index charts.
+     * @description Processes indices one by one sequentially.
+     * @param index - Current index
+     */
+    const syncCharts = async (index: number): Promise<void> => {
+      const item = result[index]
+      if (!item || index >= result.length) {
+        return
+      }
+      await syncIndexChart(item.code)
+      await new Promise((resolve) => setTimeout(resolve, 500))
+      return await syncCharts(index + 1)
+    }
+    await syncCharts(0)
   }
 }
