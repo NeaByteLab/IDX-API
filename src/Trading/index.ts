@@ -61,6 +61,80 @@ export default class TradingModule extends BaseClient {
   }
 
   /**
+   * Fetch index trading summary.
+   * @description Returns performance data for market indices with optional filtering.
+   * @param date - Date in YYYYMMDD format
+   * @param start - Start record index
+   * @param length - Maximum record count
+   * @returns Paginated index summary records
+   */
+  async getIndexSummary(
+    date: string,
+    start = 0,
+    length = 9999
+  ): Promise<Types.TradingResponse<Types.IndexSummary> | null> {
+    await this.ensureSession()
+    try {
+      const url =
+        `https://www.idx.co.id/primary/TradingSummary/GetIndexSummary?lang=id&date=${date}&start=${start}&length=${length}`
+      const response = await fetch(url, {
+        headers: {
+          ...this.browserHeaders,
+          'X-Requested-With': 'XMLHttpRequest',
+          Cookie: this.sessionCookie
+        }
+      })
+      const rawResponse = await response.json()
+      if (!rawResponse || !Array.isArray(rawResponse.data)) {
+        return null
+      }
+      return {
+        data: rawResponse.data.map(
+          (item: {
+            IndexSummaryID: number
+            IndexCode: string
+            Date: string
+            Previous: number
+            Close: number
+            Highest: number
+            Lowest: number
+            Change: number
+            Volume: number
+            Value: number
+            Frequency: number
+            MarketCapital: number
+          }) => {
+            const percent = item.Previous !== 0 ? (item.Change / item.Previous) * 100 : 0
+            return {
+              id: item.IndexSummaryID,
+              code: item.IndexCode,
+              name: item.IndexCode,
+              date: new Date(item.Date),
+              price: {
+                previous: item.Previous,
+                high: item.Highest,
+                low: item.Lowest,
+                close: item.Close,
+                change: item.Change,
+                percent: Number(percent.toFixed(2))
+              },
+              trading: {
+                volume: item.Volume,
+                value: item.Value,
+                frequency: item.Frequency
+              },
+              marketCap: item.MarketCapital
+            }
+          }
+        ),
+        recordsTotal: rawResponse.recordsTotal
+      }
+    } catch {
+      return null
+    }
+  }
+
+  /**
    * Fetch stock trading summary.
    * @param date - Date in YYYYMMDD format
    * @returns Stock summary records

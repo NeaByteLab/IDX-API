@@ -20,6 +20,47 @@ export interface BrokerSummary {
 }
 
 /**
+ * Index trading summary structure.
+ * @description Defines fields for market index trading performance.
+ */
+export interface IndexSummary {
+  /** Index record identification */
+  id: number
+  /** Index identification code */
+  code: string
+  /** Registered index name */
+  name: string
+  /** Summary statement date */
+  date: Date
+  /** Price Data OHLC */
+  price: {
+    /** Previous close */
+    previous: number
+    /** High price */
+    high: number
+    /** Low price */
+    low: number
+    /** Close price */
+    close: number
+    /** Absolute price change */
+    change: number
+    /** Percentage price change */
+    percent: number
+  }
+  /** Trading activity results */
+  trading: {
+    /** Aggregate trade volume */
+    volume: number
+    /** Aggregate trade value */
+    value: number
+    /** Total trade frequency */
+    frequency: number
+  }
+  /** Specific market cap data */
+  marketCap: number
+}
+
+/**
  * Stock trading summary structure.
  * @description Daily stock data with nested domain.
  */
