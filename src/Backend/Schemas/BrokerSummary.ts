@@ -1,8 +1,8 @@
 import { integer, real, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
 /**
- * Broker Summary schema.
- * @description Mirror of BrokerSummary data from IDX API.
+ * Broker summary schema.
+ * @description Mirror of BrokerSummary from IDX API.
  */
 export const brokerSummary = sqliteTable('broker_summary', {
   /** Unique record identifier */

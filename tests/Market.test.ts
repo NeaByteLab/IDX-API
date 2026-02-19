@@ -16,6 +16,21 @@ Deno.test('MarketModule - getCalendar (Invalid Date)', async () => {
   assert(result === null || result.results.length === 0)
 })
 
+Deno.test('MarketModule - getDailyIndices', async () => {
+  const market = new MarketModule()
+  const result = await market.getDailyIndices(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result))
+    if (result.length > 0) {
+      const first = result[0]
+      if (first) {
+        assert(first.name !== undefined)
+        assert(Array.isArray(first.points))
+      }
+    }
+  }
+})
+
 Deno.test('MarketModule - getIndexChart (All Periods)', async () => {
   const market = new MarketModule()
   const periods = ['1D', '1W', '1M', '1Q', '1Y'] as const
@@ -45,6 +60,22 @@ Deno.test('MarketModule - getIndexList (Real API)', async () => {
       if (first) {
         assert(first.code !== undefined)
         assert(typeof first.current === 'string')
+      }
+    }
+  }
+})
+
+Deno.test('MarketModule - getSectoralMovement', async () => {
+  const market = new MarketModule()
+  const result = await market.getSectoralMovement(2024, 1)
+  if (result !== null) {
+    assert(result.title !== undefined)
+    assert(Array.isArray(result.series))
+    if (result.series.length > 0) {
+      const first = result.series[0]
+      if (first) {
+        assert(first.name !== undefined)
+        assert(Array.isArray(first.points))
       }
     }
   }

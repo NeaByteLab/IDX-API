@@ -4,7 +4,7 @@ import { db } from '@app/Database.ts'
 
 /**
  * Sync registered brokers.
- * @description Fetches and updates exchange member brokers.
+ * @description Updates exchange member brokers data.
  * @returns Empty promise completion
  */
 export async function syncBrokerParticipant(): Promise<void> {

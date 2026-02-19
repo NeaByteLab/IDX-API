@@ -4,7 +4,7 @@ import { db } from '@app/Database.ts'
 
 /**
  * Sync market participants.
- * @description Fetches and updates market participants.
+ * @description Updates registered market participants data.
  * @returns Empty promise completion
  */
 export async function syncProfileParticipant(): Promise<void> {

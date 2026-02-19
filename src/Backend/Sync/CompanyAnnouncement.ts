@@ -4,7 +4,7 @@ import { db } from '@app/Database.ts'
 
 /**
  * Sync company announcements.
- * @description Fetches and updates latest announcements.
+ * @description Updates latest company announcements.
  * @returns Empty promise completion
  */
 export async function syncCompanyAnnouncement(): Promise<void> {

@@ -3,9 +3,21 @@
  * @description Defines fields for single calendar occurrences.
  */
 export interface CalendarEvent {
+  /** Event unique ID */
+  id: number
+  /** Event title (usually stock code) */
+  code: string
+  /** Event category/type */
+  type: string
   /** Event description */
   description: string
-  /** Agenda year */
+  /** Event location or link */
+  location: string
+  /** Current process step */
+  step: string
+  /** Event starting timestamp */
+  date: string
+  /** Agenda year record */
   year: string
 }
 
@@ -29,6 +41,30 @@ export interface ChartPoint {
   date: string
   /** Numeric value at that point */
   value: number
+}
+
+/**
+ * Daily IDX indices response.
+ * @description Time-series data for a market index.
+ */
+export interface DailyIndexData {
+  /** Index name */
+  name: string
+  /** Latest closing price */
+  closeVal: string
+  /** Monthly performance points */
+  points: DailyIndexPoint[]
+}
+
+/**
+ * Daily IDX index data point.
+ * @description Single day record of index performance.
+ */
+export interface DailyIndexPoint {
+  /** Date of record */
+  date: string
+  /** Closing price */
+  close: number
 }
 
 /**
@@ -61,4 +97,39 @@ export interface IndexData {
   percent: string
   /** Current index value */
   current: string
+}
+
+/**
+ * Sectoral movement response.
+ * @description Collection of all sectoral performances.
+ */
+export interface SectoralMovementResponse {
+  /** Report title */
+  title: string
+  /** Report date range */
+  subtitle: string
+  /** Sector data series */
+  series: SectoralSeries[]
+}
+
+/**
+ * Sectoral movement data point.
+ * @description Single day record of sector movement.
+ */
+export interface SectoralPoint {
+  /** Date of record */
+  date: string
+  /** Percentage change */
+  change: number
+}
+
+/**
+ * Sectoral movement series.
+ * @description performance data for a specific sector.
+ */
+export interface SectoralSeries {
+  /** Sector name */
+  name: string
+  /** Time-series data points */
+  points: SectoralPoint[]
 }

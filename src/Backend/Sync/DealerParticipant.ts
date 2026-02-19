@@ -4,7 +4,7 @@ import { db } from '@app/Database.ts'
 
 /**
  * Sync primary dealers.
- * @description Fetches and updates primary dealers.
+ * @description Updates registered primary dealers data.
  * @returns Empty promise completion
  */
 export async function syncDealerParticipant(): Promise<void> {

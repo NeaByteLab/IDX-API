@@ -3,9 +3,9 @@ import TradingModule from '@app/Trading/index.ts'
 import { db } from '@app/Database.ts'
 
 /**
- * Sync Stock Summary.
- * @description Process daily stock summaries for a specific date.
- * @param date - YYYYMMDD format date string
+ * Sync stock summary.
+ * @description Updates daily stock summaries for date.
+ * @param date - YYYYMMDD date string
  * @returns Empty promise completion
  */
 export async function syncStockSummary(date: string): Promise<void> {

@@ -3,8 +3,8 @@ import TradingModule from '@app/Trading/index.ts'
 import { db } from '@app/Database.ts'
 
 /**
- * Sync Trade Summary.
- * @description Process daily trade summary by type/segment.
+ * Sync trade summary.
+ * @description Updates daily trade summary by type.
  * @returns Empty promise completion
  */
 export async function syncTradeSummary(): Promise<void> {

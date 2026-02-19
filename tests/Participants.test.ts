@@ -36,16 +36,6 @@ Deno.test('ParticipantsModule - getParticipantSearch (Default)', async () => {
   assert(typeof first.isPrimary === 'boolean', 'isPrimary should be boolean')
 })
 
-Deno.test('ParticipantsModule - getParticipantSearch (Search by Code/Name)', async () => {
-  const module = new ParticipantsModule()
-  const searchTerm = 'Mandiri'
-  const result = await module.getParticipantSearch(0, 10, searchTerm)
-  assert(result !== null)
-  assert(result.data.length > 0, `Should find participants matching '${searchTerm}'`)
-  const match = result.data[0]
-  assert(match !== undefined, 'Match should exist')
-})
-
 Deno.test('ParticipantsModule - getParticipantSearch (Filter by License)', async () => {
   const module = new ParticipantsModule()
   const license = 'Perantara Pedagang Efek'
@@ -55,6 +45,16 @@ Deno.test('ParticipantsModule - getParticipantSearch (Filter by License)', async
     const first = result.data[0]
     assert(first !== undefined)
   }
+})
+
+Deno.test('ParticipantsModule - getParticipantSearch (Search by Code/Name)', async () => {
+  const module = new ParticipantsModule()
+  const searchTerm = 'Mandiri'
+  const result = await module.getParticipantSearch(0, 10, searchTerm)
+  assert(result !== null)
+  assert(result.data.length > 0, `Should find participants matching '${searchTerm}'`)
+  const match = result.data[0]
+  assert(match !== undefined, 'Match should exist')
 })
 
 Deno.test('ParticipantsModule - getPrimaryDealerSearch (Default)', async () => {

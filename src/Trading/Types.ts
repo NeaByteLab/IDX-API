@@ -1,4 +1,44 @@
 /**
+ * Top active stock response.
+ * @description Wrapper for most active stock lists.
+ */
+export interface ActiveStockResponse {
+  /** Total market value */
+  totalValue: number
+  /** Total market volume */
+  totalVolume: number
+  /** Total market frequency */
+  totalFreq: number
+  /** List of top active stocks */
+  data: ActiveStockSummary[]
+}
+
+/**
+ * Top active stock summary.
+ * @description Structure for most active stock lists.
+ */
+export interface ActiveStockSummary {
+  /** Stock ticker code */
+  code: string
+  /** Stock company name */
+  name: string
+  /** Total trading volume */
+  volume: number
+  /** Total trading value */
+  value: number
+  /** Trading frequency */
+  frequency: number
+  /** Volume percentage of total market */
+  volumePercent: number
+  /** Value percentage of total market */
+  valuePercent: number
+  /** Frequency percentage of total market */
+  freqPercent: number
+  /** Trading days */
+  tradingDays: number
+}
+
+/**
  * Broker trading summary structure.
  * @description Defines fields for broker-specific trading volume.
  */
@@ -58,6 +98,54 @@ export interface IndexSummary {
   }
   /** Specific market cap data */
   marketCap: number
+}
+
+/**
+ * Industry trading summary.
+ * @description Structure for trading data aggregated by industry.
+ */
+export interface IndustryTradingSummary {
+  /** Record date */
+  date: string
+  /** Industry or sector specification */
+  industry: string
+  /** Number of listed shares */
+  shares: number
+  /** Market capitalization in million IDR */
+  marketCap: number
+  /** Total trading volume in thousand shares */
+  volume: number
+  /** Total trading value in million IDR */
+  value: number
+  /** Total trading frequency */
+  frequency: number
+  /** Price to Earnings Ratio */
+  per: number
+  /** Price to Book Value */
+  pbv: number
+  /** Number of member companies */
+  members: number
+}
+
+/**
+ * Foreign/Domestic daily trading summary.
+ * @description Structure for investor type daily transactions.
+ */
+export interface InvestorTradingSummary {
+  /** Record date */
+  date: string
+  /** Buy volume by selected investor type */
+  buyVolume: number
+  /** Buy value by selected investor type */
+  buyValue: number
+  /** Buy frequency by selected investor type */
+  buyFrequency: number
+  /** Sell volume by selected investor type */
+  sellVolume: number
+  /** Sell value by selected investor type */
+  sellValue: number
+  /** Sell frequency by selected investor type */
+  sellFrequency: number
 }
 
 /**
@@ -141,6 +229,29 @@ export interface StockSummary {
     /** Non-regular frequency */
     frequency: number
   }
+}
+
+/**
+ * Top gainer/loser stock summary.
+ * @description Structure for top moving stocks.
+ */
+export interface TopStockSummary {
+  /** Stock ticker code */
+  code: string
+  /** Stock company name */
+  name: string
+  /** Previous close price */
+  previous: number
+  /** Previous price adjusted for corporate action */
+  previousCA: number
+  /** Current close price */
+  close: number
+  /** Dilution factor */
+  dilution: number
+  /** Price change value */
+  change: number
+  /** Price change percentage */
+  percentage: number
 }
 
 /**

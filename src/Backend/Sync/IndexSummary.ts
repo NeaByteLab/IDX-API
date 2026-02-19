@@ -3,9 +3,9 @@ import TradingModule from '@app/Trading/index.ts'
 import { db } from '@app/Database.ts'
 
 /**
- * Sync Index Summary.
- * @description Process market indices for a specific date.
- * @param date - YYYYMMDD format date string
+ * Sync index summary.
+ * @description Updates market indices for specific date.
+ * @param date - YYYYMMDD date string
  * @returns Empty promise completion
  */
 export async function syncIndexSummary(date: string): Promise<void> {

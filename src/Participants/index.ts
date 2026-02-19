@@ -1,5 +1,5 @@
-import type * as Types from '@app/Participants/Types.ts'
 import BaseClient from '@app/Client.ts'
+import type * as Types from '@app/Participants/Types.ts'
 
 /**
  * Exchange participants data module.
@@ -16,15 +16,16 @@ export default class ParticipantsModule extends BaseClient {
   async getBrokerSearch(start = 0, length = 9999): Promise<Types.BrokerProfile[] | null> {
     await this.ensureSession()
     try {
-      const url =
-        `https://www.idx.co.id/primary/ExchangeMember/GetBrokerSearch?start=${start}&length=${length}`
-      const response = await fetch(url, {
-        headers: {
-          ...this.browserHeaders,
-          'X-Requested-With': 'XMLHttpRequest',
-          Cookie: this.sessionCookie
+      const response = await fetch(
+        `https://www.idx.co.id/primary/ExchangeMember/GetBrokerSearch?start=${start}&length=${length}`,
+        {
+          headers: {
+            ...this.browserHeaders,
+            'X-Requested-With': 'XMLHttpRequest',
+            Cookie: this.sessionCookie
+          }
         }
-      })
+      )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
         return null
@@ -57,15 +58,16 @@ export default class ParticipantsModule extends BaseClient {
   ): Promise<Types.PaginatedResponse<Types.ParticipantProfile> | null> {
     await this.ensureSession()
     try {
-      const url =
-        `https://www.idx.co.id/primary/ExchangeMember/GetParticipantSearch?start=${start}&length=${length}&codeName=${codeOrName}&license=${license}`
-      const response = await fetch(url, {
-        headers: {
-          ...this.browserHeaders,
-          'X-Requested-With': 'XMLHttpRequest',
-          Cookie: this.sessionCookie
+      const response = await fetch(
+        `https://www.idx.co.id/primary/ExchangeMember/GetParticipantSearch?start=${start}&length=${length}&codeName=${codeOrName}&license=${license}`,
+        {
+          headers: {
+            ...this.browserHeaders,
+            'X-Requested-With': 'XMLHttpRequest',
+            Cookie: this.sessionCookie
+          }
         }
-      })
+      )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
         return null
@@ -111,15 +113,16 @@ export default class ParticipantsModule extends BaseClient {
   ): Promise<Types.PaginatedResponse<Types.PrimaryDealerProfile> | null> {
     await this.ensureSession()
     try {
-      const url =
-        `https://www.idx.co.id/primary/ExchangeMember/GetPrimaryDealerSearch?start=${start}&length=${length}&codeName=${codeOrName}&license=${license}`
-      const response = await fetch(url, {
-        headers: {
-          ...this.browserHeaders,
-          'X-Requested-With': 'XMLHttpRequest',
-          Cookie: this.sessionCookie
+      const response = await fetch(
+        `https://www.idx.co.id/primary/ExchangeMember/GetPrimaryDealerSearch?start=${start}&length=${length}&codeName=${codeOrName}&license=${license}`,
+        {
+          headers: {
+            ...this.browserHeaders,
+            'X-Requested-With': 'XMLHttpRequest',
+            Cookie: this.sessionCookie
+          }
         }
-      })
+      )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
         return null

@@ -1,12 +1,20 @@
 import { assert } from '@std/assert'
 import CompanyModule from '@app/Company/index.ts'
 
+Deno.test('CompanyModule - getAdditionalListings', async () => {
+  const module = new CompanyModule()
+  const result = await module.getAdditionalListings(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result.data), 'data should be an array')
+  }
+})
+
 Deno.test('CompanyModule - getAnnouncements', async () => {
   const module = new CompanyModule()
   const result = await module.getAnnouncements('BBCA', 10, 0, '20200101', '20261231')
   assert(result !== null, 'Result should not be null')
   assert(Array.isArray(result.data), 'data should be an array')
-  if (result.data.length > 0) {
+  if (result.data.length > 0 && result.data[0]) {
     assert(result.data[0].details.companyCode === 'BBCA', 'Should be BBCA')
   }
 })
@@ -33,6 +41,38 @@ Deno.test('CompanyModule - getCompanyProfilesDetail', async () => {
   assert(result.directors.length > 0, 'Should have directors')
 })
 
+Deno.test('CompanyModule - getDelistings', async () => {
+  const module = new CompanyModule()
+  const result = await module.getDelistings(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result.data), 'data should be an array')
+  }
+})
+
+Deno.test('CompanyModule - getDividendAnnouncements', async () => {
+  const module = new CompanyModule()
+  const result = await module.getDividendAnnouncements(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result.data), 'data should be an array')
+  }
+})
+
+Deno.test('CompanyModule - getFinancialRatios', async () => {
+  const module = new CompanyModule()
+  const result = await module.getFinancialRatios(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result.data), 'data should be an array')
+  }
+})
+
+Deno.test('CompanyModule - getNewListings', async () => {
+  const module = new CompanyModule()
+  const result = await module.getNewListings(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result.data), 'data should be an array')
+  }
+})
+
 Deno.test('CompanyModule - getRelistingData', async () => {
   const module = new CompanyModule()
   const result = await module.getRelistingData(5, 0)
@@ -40,11 +80,27 @@ Deno.test('CompanyModule - getRelistingData', async () => {
   assert(Array.isArray(result.data), 'data should be an array')
 })
 
+Deno.test('CompanyModule - getRightOfferings', async () => {
+  const module = new CompanyModule()
+  const result = await module.getRightOfferings(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result.data), 'data should be an array')
+  }
+})
+
 Deno.test('CompanyModule - getSecuritiesStock', async () => {
   const module = new CompanyModule()
   const result = await module.getSecuritiesStock(0, 5)
   assert(result !== null, 'Result should not be null')
   assert(Array.isArray(result.data), 'data should be an array')
+})
+
+Deno.test('CompanyModule - getStockSplits', async () => {
+  const module = new CompanyModule()
+  const result = await module.getStockSplits(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result.data), 'data should be an array')
+  }
 })
 
 Deno.test('CompanyModule - getSuspendData', async () => {

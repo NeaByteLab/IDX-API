@@ -3,8 +3,8 @@ import CompanyModule from '@app/Company/index.ts'
 import { db } from '@app/Database.ts'
 
 /**
- * Sync company profiles and details.
- * @description Fetches and updates listing data with exhaustive metadata.
+ * Sync company profiles.
+ * @description Updates listing data with exhaustive metadata.
  * @returns Empty promise completion
  */
 export async function syncCompanyProfile(): Promise<void> {
@@ -25,9 +25,9 @@ export async function syncCompanyProfile(): Promise<void> {
   })
   await Promise.all(profileQueries)
   /**
-   * Recursive detail fetcher.
-   * @description Processes companies one by one with rate limiting.
-   * @param index - Current company index
+   * Fetch company details.
+   * @description Processes companies one by one sequentially.
+   * @param index - Current index
    */
   const syncDetails = async (index: number): Promise<void> => {
     const item = result.data[index]

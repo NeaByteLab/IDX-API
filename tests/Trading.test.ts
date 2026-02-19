@@ -22,6 +22,22 @@ Deno.test('TradingModule - getBrokerSummary (Pagination: Length & Offset)', asyn
   }
 })
 
+Deno.test('TradingModule - getDomesticTradingSummary', async () => {
+  const trading = new TradingModule()
+  const result = await trading.getDomesticTradingSummary(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result))
+  }
+})
+
+Deno.test('TradingModule - getForeignTradingSummary', async () => {
+  const trading = new TradingModule()
+  const result = await trading.getForeignTradingSummary(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result))
+  }
+})
+
 Deno.test('TradingModule - getIndexSummary (Invalid Date)', async () => {
   const trading = new TradingModule()
   const result = await trading.getIndexSummary('00000000')
@@ -42,6 +58,38 @@ Deno.test('TradingModule - getIndexSummary (Pagination)', async () => {
   }
 })
 
+Deno.test('TradingModule - getIndustryTradingSummary', async () => {
+  const trading = new TradingModule()
+  const result = await trading.getIndustryTradingSummary(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result))
+  }
+})
+
+Deno.test('TradingModule - getMostActiveByFrequency', async () => {
+  const trading = new TradingModule()
+  const result = await trading.getMostActiveByFrequency(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result.data))
+  }
+})
+
+Deno.test('TradingModule - getMostActiveByValue', async () => {
+  const trading = new TradingModule()
+  const result = await trading.getMostActiveByValue(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result.data))
+  }
+})
+
+Deno.test('TradingModule - getMostActiveByVolume', async () => {
+  const trading = new TradingModule()
+  const result = await trading.getMostActiveByVolume(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result.data))
+  }
+})
+
 Deno.test('TradingModule - getStockSummary (Invalid Date)', async () => {
   const trading = new TradingModule()
   const result = await trading.getStockSummary('00000000')
@@ -59,6 +107,22 @@ Deno.test('TradingModule - getStockSummary', async () => {
       assert(typeof first.price.close === 'number')
       assert(first.date instanceof Date)
     }
+  }
+})
+
+Deno.test('TradingModule - getTopGainers', async () => {
+  const trading = new TradingModule()
+  const result = await trading.getTopGainers(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result))
+  }
+})
+
+Deno.test('TradingModule - getTopLosers', async () => {
+  const trading = new TradingModule()
+  const result = await trading.getTopLosers(2024, 1)
+  if (result !== null) {
+    assert(Array.isArray(result))
   }
 })
 

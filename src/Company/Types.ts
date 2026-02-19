@@ -1,4 +1,21 @@
 /**
+ * Additional listing shares data.
+ * @description Record of increased share supply events.
+ */
+export interface AdditionalListing {
+  /** Company ticker code */
+  code: string
+  /** Issuer company name */
+  name: string
+  /** Amount of newly listed shares */
+  shares: number
+  /** Mechanism or reason for listing */
+  type: string
+  /** Additional shares listing date */
+  listingDate: string
+}
+
+/**
  * Combined announcement data record.
  * @description Links details and attachments for announcements.
  */
@@ -131,6 +148,17 @@ export interface CompanyDetailResponse {
 }
 
 /**
+ * Generic company paginated response wrapper.
+ * @description Standard structure for paginated listing and corporate actions data.
+ */
+export interface CompanyPaginatedResponse<T> {
+  /** Data payload */
+  data: T[]
+  /** Total matched records */
+  recordsTotal?: number
+}
+
+/**
  * Company profile data.
  * @description Defines fields for basic company identification.
  */
@@ -155,6 +183,112 @@ export interface CompanyProfileResponse {
 }
 
 /**
+ * Delisted stock record.
+ * @description Companies removed from active trading.
+ */
+export interface Delisting {
+  /** Ticker code previously used */
+  code: string
+  /** Issuer company name */
+  name: string
+  /** Initial listing date */
+  listingDate: string
+  /** Delisting effect date */
+  delistingDate: string
+}
+
+/**
+ * Company dividend announcement event.
+ * @description Detailed dividend distribution schedule.
+ */
+export interface DividendAnnouncement {
+  /** Company ticker code */
+  code: string
+  /** Company name */
+  name: string
+  /** Distributed cash dividend per share */
+  cashDividend: number
+  /** Cum-dividend date */
+  cumDividend: string
+  /** Ex-dividend date */
+  exDividend: string
+  /** Recording date */
+  recordDate: string
+  /** Official payment date */
+  paymentDate: string
+}
+
+/**
+ * Company financial ratios structure.
+ * @description Key financial indicators and performance metrics.
+ */
+export interface FinancialRatio {
+  /** Company ticker code */
+  code: string
+  /** Company full name */
+  name: string
+  /** Broad sector classification */
+  sector: string
+  /** Specialized sub-sector */
+  subSector: string
+  /** Detailed industry classification */
+  industry: string
+  /** Specific sub-industry classification */
+  subIndustry: string
+  /** Financial statement date */
+  period: string
+  /** Total assets */
+  assets: number
+  /** Total liabilities */
+  liabilities: number
+  /** Total equity */
+  equity: number
+  /** Total sales/revenue */
+  sales: number
+  /** Earnings before tax */
+  ebt: number
+  /** Period profit */
+  profit: number
+  /** Earnings per share */
+  eps: number
+  /** Book value */
+  bookValue: number
+  /** Price-to-earnings ratio */
+  per: number
+  /** Price-to-book value ratio */
+  pbv: number
+  /** Debt-to-equity ratio */
+  der: number
+  /** Return on assets */
+  roa: number
+  /** Return on equity */
+  roe: number
+  /** Net profit margin */
+  npm: number
+}
+
+/**
+ * New listing event data (IPO).
+ * @description Initial public offering metadata.
+ */
+export interface NewListing {
+  /** Scheduled ticker code */
+  code: string
+  /** Issuer company name */
+  name: string
+  /** Pre-listed shares */
+  listedShares: number
+  /** Number of offered shares */
+  offeringShares: number
+  /** Official offering price */
+  offeringPrice: number
+  /** Total funds raised */
+  fundRaised: number
+  /** First trading day */
+  listingDate: string
+}
+
+/**
  * Company relisting activity data.
  * @description Defines fields for relisting event records.
  */
@@ -176,6 +310,29 @@ export interface RelistingResponse {
   data: RelistingData[]
   /** Total records */
   recordsTotal: number
+}
+
+/**
+ * Right offering event data.
+ * @description Information regarding shares subscription rights.
+ */
+export interface RightOffering {
+  /** Company ticker code */
+  code: string
+  /** Issuer company name */
+  name: string
+  /** Rights execution ratio */
+  ratio: string
+  /** Target exercise price */
+  exercisePrice: number
+  /** Target funds to be generated */
+  fundRaised: number
+  /** Ex-rights date */
+  exerciseDate: string
+  /** Cutoff recording date */
+  recordingDate: string
+  /** Rights trading window */
+  tradingPeriod: string
 }
 
 /**
@@ -209,12 +366,45 @@ export interface SecurityStock {
 }
 
 /**
+ * Stock split event data.
+ * @description Record of approved stock splits/reverse-splits.
+ */
+export interface StockSplit {
+  /** Company ticker code */
+  code: string
+  /** Issuer company name */
+  name: string
+  /** Split or reverse split classification */
+  type: string
+  /** Execution ratio */
+  ratio: string
+  /** Old nominal value */
+  oldNominal: number
+  /** New nominal value */
+  newNominal: number
+  /** Additional shares from split */
+  additionalShares: number
+  /** Total shares after split */
+  listedShares: number
+  /** New shares listing date */
+  listingDate: string
+}
+
+/**
  * Security suspension event data.
  * @description Defines fields for trading suspension records.
  */
 export interface SuspendEvent {
+  /** Security ticker code */
+  code: string
   /** Suspension title/description */
   title: string
+  /** Event timestamp */
+  date: string
+  /** Type of information (Suspend/Unsuspend) */
+  type: string
+  /** Link to announcement PDF */
+  downloadUrl: string
 }
 
 /**

@@ -1,19 +1,4 @@
 /**
- * Paginated API response wrapper.
- * @template T - Data type
- */
-export interface PaginatedResponse<T> {
-  /** Draw counter (for DataTables) */
-  draw: number
-  /** Total records in database */
-  recordsTotal: number
-  /** Records after filtering */
-  recordsFiltered: number
-  /** Response data array */
-  data: T[]
-}
-
-/**
  * Exchange member broker profile.
  * @description Exchange member with trading license.
  */
@@ -27,6 +12,21 @@ export interface BrokerProfile {
 }
 
 /**
+ * Paginated API response wrapper.
+ * @description Generic paginated API response format.
+ */
+export interface PaginatedResponse<T> {
+  /** Draw counter (for DataTables) */
+  draw: number
+  /** Total records in database */
+  recordsTotal: number
+  /** Records after filtering */
+  recordsFiltered: number
+  /** Response data array */
+  data: T[]
+}
+
+/**
  * Market participant profile data.
  * @description General participant including banks and institutions.
  */
@@ -37,7 +37,7 @@ export interface ParticipantProfile {
   name: string
   /** License type */
   license: string
-  /** Is Primary Dealer flag (1 = yes, 0 = no) */
+  /** Primary dealer indicator flag */
   isPrimary: boolean
 }
 
