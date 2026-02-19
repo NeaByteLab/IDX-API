@@ -1,7 +1,7 @@
 {
   "name": "@neabyte/idx-api",
   "type": "module",
-  "license": "PROPRIETARY",
+  "license": "MIT",
   "exports": "./src/index.ts",
   "compilerOptions": {
     "allowUnreachableCode": false,
