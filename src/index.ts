@@ -1,5 +1,6 @@
 import CompanyModule from '@app/Company/index.ts'
 import MarketModule from '@app/Market/index.ts'
+import ParticipantsModule from '@app/Participants/index.ts'
 import StatisticModule from '@app/Statistics/index.ts'
 import TradingModule from '@app/Trading/index.ts'
 
@@ -29,6 +30,8 @@ export default class IDXClient {
   public readonly company: CompanyModule
   /** Market and calendar data */
   public readonly market: MarketModule
+  /** Exchange members and participants */
+  public readonly participants: ParticipantsModule
   /** Statistics and discovery features */
   public readonly statistics: StatisticModule
   /** Trading summaries and reports */
@@ -41,6 +44,7 @@ export default class IDXClient {
   constructor() {
     this.company = new CompanyModule()
     this.market = new MarketModule()
+    this.participants = new ParticipantsModule()
     this.statistics = new StatisticModule()
     this.trading = new TradingModule()
   }
