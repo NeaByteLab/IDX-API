@@ -16,12 +16,20 @@ export interface BondSummary {
  * @description Defines fields for broker-specific trading volume.
  */
 export interface BrokerSummary {
-  /** Broker code */
+  /** Unique IDX record identifier */
+  idBrokerSummary: number
+  /** Record statement date */
+  date: Date
+  /** Unique firm identifier */
   brokerCode: string
-  /** Broker name */
+  /** Registered firm name */
   brokerName: string
-  /** Total value traded */
+  /** Aggregate trade value */
   totalValue: number
+  /** Aggregate trade volume */
+  volume: number
+  /** Total trade frequency */
+  frequency: number
 }
 
 /**

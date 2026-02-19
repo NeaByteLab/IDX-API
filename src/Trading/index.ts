@@ -64,11 +64,25 @@ export default class TradingModule extends BaseClient {
         return null
       }
       return {
-        data: rawResponse.data.map((item: { IDFirm: string; FirmName: string; Value: number }) => ({
-          brokerCode: item.IDFirm,
-          brokerName: item.FirmName,
-          totalValue: item.Value
-        })),
+        data: rawResponse.data.map(
+          (item: {
+            IDBrokerSummary: number
+            Date: string
+            IDFirm: string
+            FirmName: string
+            Value: number
+            Volume: number
+            Frequency: number
+          }) => ({
+            idBrokerSummary: item.IDBrokerSummary,
+            date: new Date(item.Date),
+            brokerCode: item.IDFirm,
+            brokerName: item.FirmName,
+            totalValue: item.Value,
+            volume: item.Volume,
+            frequency: item.Frequency
+          })
+        ),
         recordsTotal: rawResponse.recordsTotal
       }
     } catch {
@@ -79,19 +93,12 @@ export default class TradingModule extends BaseClient {
   /**
    * Fetch margin trading summary.
    * @param date - Date in YYYYMMDD format
-   * @param start - Start record index
-   * @param length - Maximum record count
-   * @returns Paginated margin summary data
+   * @returns Margin summary records
    */
-  async getMarginSummary(
-    date: string,
-    start = 0,
-    length = 9999
-  ): Promise<Types.TradingResponse<Types.MarginSummary> | null> {
+  async getMarginSummary(date: string): Promise<Types.MarginSummary[] | null> {
     await this.ensureSession()
     try {
-      const url =
-        `https://www.idx.co.id/primary/TradingSummary/GetMarginSummary?length=${length}&start=${start}&date=${date}`
+      const url = `https://www.idx.co.id/primary/TradingSummary/GetMarginSummary?date=${date}`
       const response = await fetch(url, {
         headers: {
           ...this.browserHeaders,
@@ -100,16 +107,13 @@ export default class TradingModule extends BaseClient {
         }
       })
       const rawResponse = await response.json()
-      if (!rawResponse || !rawResponse.data) {
+      if (!rawResponse || !Array.isArray(rawResponse.data)) {
         return null
       }
-      return {
-        data: rawResponse.data.map((item: { Efek: string; High: string }) => ({
-          code: item.Efek,
-          notes: item.High
-        })),
-        recordsTotal: rawResponse.recordsTotal
-      }
+      return rawResponse.data.map((item: { Efek: string; High: string }) => ({
+        code: item.Efek,
+        notes: item.High
+      }))
     } catch {
       return null
     }
@@ -118,19 +122,12 @@ export default class TradingModule extends BaseClient {
   /**
    * Fetch stock trading summary.
    * @param date - Date in YYYYMMDD format
-   * @param start - Start record index
-   * @param length - Maximum record count
-   * @returns Paginated stock summary data
+   * @returns Stock summary records
    */
-  async getStockSummary(
-    date: string,
-    start = 0,
-    length = 9999
-  ): Promise<Types.TradingResponse<Types.StockSummary> | null> {
+  async getStockSummary(date: string): Promise<Types.StockSummary[] | null> {
     await this.ensureSession()
     try {
-      const url =
-        `https://www.idx.co.id/primary/TradingSummary/GetStockSummary?length=${length}&start=${start}&date=${date}`
+      const url = `https://www.idx.co.id/primary/TradingSummary/GetStockSummary?date=${date}`
       const response = await fetch(url, {
         headers: {
           ...this.browserHeaders,
@@ -139,17 +136,14 @@ export default class TradingModule extends BaseClient {
         }
       })
       const rawResponse = await response.json()
-      if (!rawResponse || !rawResponse.data) {
+      if (!rawResponse || !Array.isArray(rawResponse.data)) {
         return null
       }
-      return {
-        data: rawResponse.data.map((item: { Code: string; Close: number; Change: number }) => ({
-          code: item.Code,
-          close: item.Close,
-          change: item.Change
-        })),
-        recordsTotal: rawResponse.recordsTotal
-      }
+      return rawResponse.data.map((item: { Code: string; Close: number; Change: number }) => ({
+        code: item.Code,
+        close: item.Close,
+        change: item.Change
+      }))
     } catch {
       return null
     }

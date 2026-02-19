@@ -2,6 +2,9 @@
 .deno/
 deno.lock
 
+# Node
+node_modules/
+
 # IDE
 .vscode/
 .idea/
@@ -9,3 +12,6 @@ deno.lock
 # OS
 .DS_Store
 Thumbs.db
+
+# Local
+data/
