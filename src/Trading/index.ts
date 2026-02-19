@@ -7,36 +7,6 @@ import BaseClient from '@app/Client.ts'
  */
 export default class TradingModule extends BaseClient {
   /**
-   * Fetch bond trading summary.
-   * @returns List of bond summary records
-   */
-  async getBondSummary(): Promise<Types.BondSummary[] | null> {
-    await this.ensureSession()
-    try {
-      const response = await fetch('https://www.idx.co.id/primary/Home/GetBondSummary', {
-        headers: {
-          ...this.browserHeaders,
-          'X-Requested-With': 'XMLHttpRequest',
-          Cookie: this.sessionCookie
-        }
-      })
-      const rawResponse = await response.json()
-      if (!Array.isArray(rawResponse)) {
-        return null
-      }
-      return rawResponse.map(
-        (item: { DESCRIPTION: string; Volume: number; Frequency: number }) => ({
-          description: item.DESCRIPTION,
-          volume: item.Volume,
-          frequency: item.Frequency
-        })
-      )
-    } catch {
-      return null
-    }
-  }
-
-  /**
    * Fetch broker trading summary.
    * @param date - Date in YYYYMMDD format
    * @param start - Start record index
@@ -74,7 +44,7 @@ export default class TradingModule extends BaseClient {
             Volume: number
             Frequency: number
           }) => ({
-            idBrokerSummary: item.IDBrokerSummary,
+            id: item.IDBrokerSummary,
             date: new Date(item.Date),
             brokerCode: item.IDFirm,
             brokerName: item.FirmName,
@@ -85,35 +55,6 @@ export default class TradingModule extends BaseClient {
         ),
         recordsTotal: rawResponse.recordsTotal
       }
-    } catch {
-      return null
-    }
-  }
-
-  /**
-   * Fetch margin trading summary.
-   * @param date - Date in YYYYMMDD format
-   * @returns Margin summary records
-   */
-  async getMarginSummary(date: string): Promise<Types.MarginSummary[] | null> {
-    await this.ensureSession()
-    try {
-      const url = `https://www.idx.co.id/primary/TradingSummary/GetMarginSummary?date=${date}`
-      const response = await fetch(url, {
-        headers: {
-          ...this.browserHeaders,
-          'X-Requested-With': 'XMLHttpRequest',
-          Cookie: this.sessionCookie
-        }
-      })
-      const rawResponse = await response.json()
-      if (!rawResponse || !Array.isArray(rawResponse.data)) {
-        return null
-      }
-      return rawResponse.data.map((item: { Efek: string; High: string }) => ({
-        code: item.Efek,
-        notes: item.High
-      }))
     } catch {
       return null
     }
@@ -139,11 +80,81 @@ export default class TradingModule extends BaseClient {
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
         return null
       }
-      return rawResponse.data.map((item: { Code: string; Close: number; Change: number }) => ({
-        code: item.Code,
-        close: item.Close,
-        change: item.Change
-      }))
+      return rawResponse.data.map(
+        (item: {
+          IDStockSummary: number
+          StockCode: string
+          StockName: string
+          Date: string
+          Remarks: string
+          OpenPrice: number
+          High: number
+          Low: number
+          Close: number
+          Previous: number
+          Change: number
+          Volume: number
+          Value: number
+          Frequency: number
+          FirstTrade: number
+          Bid: number
+          BidVolume: number
+          Offer: number
+          OfferVolume: number
+          ForeignBuy: number
+          ForeignSell: number
+          ListedShares: number
+          TradebleShares: number
+          WeightForIndex: number
+          IndexIndividual: number
+          DelistingDate: string
+          NonRegularVolume: number
+          NonRegularValue: number
+          NonRegularFrequency: number
+        }) => ({
+          id: item.IDStockSummary,
+          code: item.StockCode,
+          name: item.StockName,
+          date: new Date(item.Date),
+          remarks: item.Remarks,
+          price: {
+            open: item.OpenPrice,
+            high: item.High,
+            low: item.Low,
+            close: item.Close,
+            previous: item.Previous,
+            change: item.Change
+          },
+          trading: {
+            volume: item.Volume,
+            value: item.Value,
+            frequency: item.Frequency,
+            firstTrade: item.FirstTrade
+          },
+          orderBook: {
+            bid: item.Bid,
+            bidVolume: item.BidVolume,
+            offer: item.Offer,
+            offerVolume: item.OfferVolume
+          },
+          foreign: {
+            buy: item.ForeignBuy,
+            sell: item.ForeignSell,
+            net: item.ForeignBuy - item.ForeignSell
+          },
+          shares: {
+            listed: item.ListedShares,
+            tradable: item.TradebleShares,
+            weightForIndex: item.WeightForIndex,
+            individualIndex: item.IndexIndividual
+          },
+          nonRegular: {
+            volume: item.NonRegularVolume,
+            value: item.NonRegularValue,
+            frequency: item.NonRegularFrequency
+          }
+        })
+      )
     } catch {
       return null
     }
@@ -175,7 +186,7 @@ export default class TradingModule extends BaseClient {
           Frequency: number
           Dates: string
         }) => ({
-          description: item.DESCRIPTION,
+          id: item.DESCRIPTION,
           volume: item.Volume,
           value: item.Value,
           frequency: item.Frequency,

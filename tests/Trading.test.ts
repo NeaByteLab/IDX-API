@@ -2,19 +2,6 @@ import { assert } from '@std/assert'
 import TradingModule from '@app/Trading/index.ts'
 const testDate = '20250108'
 
-Deno.test('TradingModule - getBondSummary (Real API)', async () => {
-  const trading = new TradingModule()
-  const result = await trading.getBondSummary()
-  if (result !== null && result.length > 0) {
-    assert(Array.isArray(result))
-    const first = result[0]
-    if (first) {
-      assert(typeof first.description === 'string')
-      assert(typeof first.volume === 'number')
-    }
-  }
-})
-
 Deno.test('TradingModule - getBrokerSummary (Invalid Date)', async () => {
   const trading = new TradingModule()
   const result = await trading.getBrokerSummary('99999999')
@@ -30,18 +17,6 @@ Deno.test('TradingModule - getBrokerSummary (Pagination: Length & Offset)', asyn
     if (page2 !== null && page2.data.length > 0) {
       assert(page2.data.length <= 5)
       assert(page1.data[0]?.brokerCode !== page2.data[0]?.brokerCode)
-    }
-  }
-})
-
-Deno.test('TradingModule - getMarginSummary', async () => {
-  const trading = new TradingModule()
-  const result = await trading.getMarginSummary(testDate)
-  if (result !== null && result.length > 0) {
-    assert(Array.isArray(result))
-    const first = result[0]
-    if (first) {
-      assert(first !== undefined)
     }
   }
 })
@@ -65,7 +40,7 @@ Deno.test('TradingModule - getTradeSummary (Real API)', async () => {
     assert(Array.isArray(result))
     const first = result[0]
     if (first) {
-      assert(typeof first.description === 'string')
+      assert(typeof first.id === 'string')
       assert(typeof first.value === 'number')
       assert(typeof first.date === 'string')
     }

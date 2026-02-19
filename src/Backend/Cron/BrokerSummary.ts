@@ -16,7 +16,7 @@ export async function syncBrokerSummary(date: string): Promise<void> {
       db
         .insert(schemas.brokerSummary)
         .values({
-          id: item.idBrokerSummary,
+          id: item.id,
           date: item.date,
           brokerCode: item.brokerCode,
           brokerName: item.brokerName,
