@@ -110,6 +110,20 @@ Deno.test('TradingModule - getStockSummary', async () => {
   }
 })
 
+Deno.test('TradingModule - getTradingInfoDaily', async () => {
+  const trading = new TradingModule()
+  const result = await trading.getTradingInfoDaily('BBCA')
+  assert(result !== null, 'Result should not be null')
+  assert(result.code === 'BBCA', 'Code should match')
+})
+
+Deno.test('TradingModule - getTradingInfoSS', async () => {
+  const trading = new TradingModule()
+  const result = await trading.getTradingInfoSS('BBCA')
+  assert(result !== null, 'Result should not be null')
+  assert(Array.isArray(result), 'Result should be an array')
+})
+
 Deno.test('TradingModule - getTopGainers', async () => {
   const trading = new TradingModule()
   const result = await trading.getTopGainers(2024, 1)

@@ -85,7 +85,7 @@ export interface AnnouncementResponse {
 
 /**
  * Company detailed profile response.
- * @description Exhaustive metadata for a listed company.
+ * @description Detailed metadata for a listed company.
  */
 export interface CompanyDetailResponse {
   /** Basic profile information */
@@ -229,6 +229,42 @@ export interface DividendAnnouncement {
 }
 
 /**
+ * Financial report file metadata.
+ * @description Detailed metadata for linked report files.
+ */
+export interface FinancialAttachment {
+  /** Unique file identifier */
+  id: string
+  /** Display file name */
+  name: string
+  /** Resource file path */
+  path: string
+  /** File size in bytes */
+  size: number
+  /** File extension type */
+  type: string
+  /** Last modification timestamp */
+  modifiedAt: string
+}
+
+/**
+ * Detailed financial report result.
+ * @description Detailed financial reporting records for companies.
+ */
+export interface FinancialReport {
+  /** Company ticker code */
+  code: string
+  /** Issuer company name */
+  name: string
+  /** Fiscal year */
+  year: number
+  /** Reporting period (TW1, TW2, etc) */
+  period: string
+  /** List of report attachments */
+  attachments: FinancialAttachment[]
+}
+
+/**
  * Company financial ratios structure.
  * @description Key financial indicators and performance metrics.
  */
@@ -278,6 +314,25 @@ export interface FinancialRatio {
 }
 
 /**
+ * Issued share history record.
+ * @description Detailed record of company share issuance events.
+ */
+export interface IssuedHistory {
+  /** Record identifier */
+  id: number
+  /** Company ticker code */
+  code: string
+  /** Action date */
+  date: string
+  /** Action type classification */
+  type: string
+  /** Shares volume change */
+  shares: number
+  /** Total shares after action */
+  totalShares: number
+}
+
+/**
  * New listing event data (IPO).
  * @description Initial public offering metadata.
  */
@@ -296,6 +351,21 @@ export interface NewListing {
   fundRaised: number
   /** First trading day */
   listingDate: string
+}
+
+/**
+ * Simplified company announcement record.
+ * @description Individual records for company profile updates.
+ */
+export interface ProfileAnnouncement {
+  /** Announcement number */
+  number: string
+  /** Announcement timestamp */
+  date: string
+  /** Announcement title */
+  title: string
+  /** List of file attachments */
+  attachments: AnnouncementAttachment[]
 }
 
 /**
@@ -373,6 +443,74 @@ export interface SecurityStock {
   listingBoard: string
   /** Initial listing date */
   listingDate: string
+}
+
+/**
+ * Stock screener analytical metric response.
+ * @description Detailed stock profile metrics data.
+ */
+export interface StockScreenerResponse {
+  /** List of screened stocks */
+  results: StockScreenerResult[]
+}
+
+/**
+ * Stock screener analytical metric result.
+ * @description Detailed stock profile metrics data.
+ */
+export interface StockScreenerResult {
+  /** Stock ticker code */
+  code: string
+  /** Company name */
+  name: string
+  /** Sub-industry code */
+  subIndustryCode: string
+  /** Broad sector classification */
+  sector: string
+  /** Specialized sub-sector */
+  subSector: string
+  /** Detailed industry classification */
+  industry: string
+  /** Specific sub-industry classification */
+  subIndustry: string
+  /** Total market capitalization */
+  marketCapital: number
+  /** Total revenue */
+  totalRevenue: number
+  /** Net profit margin */
+  npm: number
+  /** Price-to-earnings ratio */
+  per: number
+  /** Price-to-book value ratio */
+  pbv: number
+  /** Return on assets */
+  roa: number
+  /** Return on equity */
+  roe: number
+  /** Debt-to-equity ratio */
+  der: number
+  /** 4 weeks price changes */
+  week4: number
+  /** 13 weeks price changes */
+  week13: number
+  /** 26 weeks price changes */
+  week26: number
+  /** 52 weeks price changes */
+  week52: number
+  /** Year to date price changes */
+  ytd: number
+  /** Month to date price changes */
+  mtd: number
+  /** Unusual Market Activity date */
+  umaDate: string | null
+  /** Special notation/remark */
+  notation: string | null
+  /** Stock trading status */
+  status: string | null
+  /** Recent corporate action */
+  corpAction: string | null
+  /** Corporate action effective date */
+  corpActionDate: string | null
 }
 
 /**

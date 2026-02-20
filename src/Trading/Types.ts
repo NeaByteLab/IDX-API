@@ -272,6 +272,130 @@ export interface TradeSummary {
 }
 
 /**
+ * Daily trading snapshot for a stock.
+ * @description Detailed price and volume data for a trading day.
+ */
+export interface TradingInfoDaily {
+  /** Summary record ID */
+  id: number
+  /** Stock ticker code */
+  code: string
+  /** Market board identifier */
+  board: string
+  /** Price movement data */
+  price: {
+    /** Previous closing price */
+    previous: number
+    /** Opening price */
+    open: number
+    /** Highest price of the day */
+    high: number
+    /** Lowest price of the day */
+    low: number
+    /** Current closing price */
+    close: number
+    /** Price change amount */
+    change: number
+  }
+  /** Trading activity metrics */
+  trading: {
+    /** Total trading volume */
+    volume: number
+    /** Total trading value */
+    value: number
+    /** Transaction frequency */
+    frequency: number
+  }
+  /** Limit order book status */
+  orderBook: {
+    /** Best bid price */
+    bid: number
+    /** Best bid volume */
+    bidVolume: number
+    /** Best offer price */
+    offer: number
+    /** Best offer volume */
+    offerVolume: number
+  }
+  /** Market statistics and ownership */
+  market: {
+    /** Stock individual index */
+    individualIndex: number
+    /** Number of foreign shares */
+    foreignShares: number
+  }
+  /** Server modification timestamp */
+  updatedAt: string
+}
+
+/**
+ * Historical stock summary record.
+ * @description Detailed historical trading summary data for a stock.
+ */
+export interface TradingInfoSS {
+  /** Sequence number */
+  no: number
+  /** Summary record ID */
+  id: number
+  /** Ticker code identifier */
+  code: string
+  /** Issuer company name */
+  name: string
+  /** Record statement date */
+  date: string
+  /** Price movement data */
+  price: {
+    /** Previous closing price */
+    previous: number
+    /** Adjusted previous price */
+    previousAdjusted: number
+    /** Opening price */
+    open: number
+    /** Highest price of the day */
+    high: number
+    /** Lowest price of the day */
+    low: number
+    /** Current closing price */
+    close: number
+    /** Price change amount */
+    change: number
+  }
+  /** Trading activity metrics */
+  trading: {
+    /** Total trading volume */
+    volume: number
+    /** Total trading value */
+    value: number
+    /** Transaction frequency */
+    frequency: number
+    /** First trade price */
+    firstTrade: number
+  }
+  /** Order book quotes */
+  orderBook: {
+    /** Best bid price */
+    bid: number
+    /** Best bid volume */
+    bidVolume: number
+    /** Best offer price */
+    offer: number
+    /** Best offer volume */
+    offerVolume: number
+  }
+  /** Share statistics */
+  shares: {
+    /** Total listed shares */
+    listed: number
+    /** Total tradable shares */
+    tradable: number
+    /** Index weight coefficient */
+    weightForIndex: number
+    /** Individual performance index */
+    individualIndex: number
+  }
+}
+
+/**
  * Generic trading response wrapper.
  * @description Standard structure for paginated trading data results.
  */

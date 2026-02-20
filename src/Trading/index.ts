@@ -453,7 +453,7 @@ export default class TradingModule extends BaseClient {
 
   /**
    * Fetch stock trading summary.
-   * @description Comprehensive stock summaries with OHLC data.
+   * @description Stock summaries with OHLC data.
    * @param date - Date in YYYYMMDD format
    * @returns Stock summary records
    */
@@ -675,6 +675,143 @@ export default class TradingModule extends BaseClient {
           value: item.Value,
           frequency: item.Frequency,
           date: item.Dates
+        })
+      )
+    } catch {
+      return null
+    }
+  }
+
+  /**
+   * Fetch daily trading snapshot.
+   * @description Price and volume data for a trading day.
+   * @param companyCode - Company ticker code
+   * @returns Daily trading snapshot data
+   */
+  async getTradingInfoDaily(companyCode: string): Promise<Types.TradingInfoDaily | null> {
+    await this.ensureSession()
+    try {
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/ListedCompany/GetTradingInfoDaily?code=${companyCode}`
+      )
+      const item = await response.json()
+      if (!item || !item.SecurityCode) {
+        return null
+      }
+      return {
+        id: item.IDStocksSummary,
+        code: item.SecurityCode,
+        board: item.BoardCode,
+        price: {
+          previous: item.PreviousPrice,
+          open: item.OpeningPrice,
+          high: item.HighestPrice,
+          low: item.LowestPrice,
+          close: item.ClosingPrice,
+          change: item.Change
+        },
+        trading: {
+          volume: item.TradedVolume,
+          value: item.TradedValue,
+          frequency: item.TradedFrequency
+        },
+        orderBook: {
+          bid: item.BestBidPrice,
+          bidVolume: item.BestBidVolume,
+          offer: item.BestOfferPrice,
+          offerVolume: item.BestOfferVolume
+        },
+        market: {
+          individualIndex: item.IndividualIndex,
+          foreignShares: item.NumberForeigner
+        },
+        updatedAt: item.DTCreate
+      }
+    } catch {
+      return null
+    }
+  }
+
+  /**
+   * Fetch historical stock summary.
+   * @description Historical trading summary data for a stock.
+   * @param companyCode - Company ticker code
+   * @param start - Starting record index
+   * @param length - Maximum record count
+   * @returns List of historical stock summary records
+   */
+  async getTradingInfoSS(
+    companyCode: string,
+    start = 0,
+    length = 1000
+  ): Promise<Types.TradingInfoSS[] | null> {
+    await this.ensureSession()
+    try {
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/ListedCompany/GetTradingInfoSS?code=${companyCode}&start=${start}&length=${length}`
+      )
+      const rawResponse = await response.json()
+      if (!rawResponse || !Array.isArray(rawResponse.replies)) {
+        return null
+      }
+      return rawResponse.replies.map(
+        (item: {
+          No: number
+          IDStockSummary: number
+          StockCode: string
+          StockName: string
+          Date: string
+          Previous: number
+          OpenPrice: number
+          FirstTrade: number
+          High: number
+          Low: number
+          Close: number
+          Change: number
+          Volume: number
+          Value: number
+          Frequency: number
+          Offer: number
+          OfferVolume: number
+          Bid: number
+          BidVolume: number
+          ListedShares: number
+          TradebleShares: number
+          WeightForIndex: number
+          IndexIndividual: number
+        }) => ({
+          no: item.No,
+          id: item.IDStockSummary,
+          code: item.StockCode,
+          name: item.StockName,
+          date: item.Date,
+          price: {
+            previous: item.Previous,
+            previousAdjusted: item.Previous, // Same in raw data usually
+            open: item.OpenPrice,
+            high: item.High,
+            low: item.Low,
+            close: item.Close,
+            change: item.Change
+          },
+          trading: {
+            volume: item.Volume,
+            value: item.Value,
+            frequency: item.Frequency,
+            firstTrade: item.FirstTrade
+          },
+          orderBook: {
+            bid: item.Bid,
+            bidVolume: item.BidVolume,
+            offer: item.Offer,
+            offerVolume: item.OfferVolume
+          },
+          shares: {
+            listed: item.ListedShares,
+            tradable: item.TradebleShares,
+            weightForIndex: item.WeightForIndex,
+            individualIndex: item.IndexIndividual
+          }
         })
       )
     } catch {

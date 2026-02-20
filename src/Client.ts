@@ -55,6 +55,7 @@ export default class BaseClient {
       try {
         const response = await fetch(url, { headers })
         if (!response.ok && response.status >= 500) {
+          await response.body?.cancel()
           throw new Error(`Server returned ${response.status}: ${response.statusText}`)
         }
         return response

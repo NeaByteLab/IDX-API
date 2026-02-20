@@ -1,7 +1,7 @@
 import * as schemas from '@app/Backend/Schemas/index.ts'
+import { syncIndexChart } from '@app/Backend/Sync/IndexChart.ts'
 import MarketModule from '@app/Market/index.ts'
 import Database from '@app/Database.ts'
-import { syncIndexChart } from '@app/Backend/Sync/IndexChart.ts'
 import Logger from '@app/Logger.ts'
 
 /**

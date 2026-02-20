@@ -89,11 +89,23 @@ await sync.syncCompanySuspend()
 // Update fundamental indicators: PER, PBV, ROE, DER (year, month)
 await sync.syncFinancialRatio(2024, 2)
 
+// Download comprehensive financial reports (companyCode, year, period)
+await sync.syncFinancialReport('BBCA', 2024, 'audit')
+
+// Track historical shares issuance events (companyCode)
+await sync.syncIssuedHistory('BBCA')
+
 // Track Initial Public Offerings / IPOs (year, month)
 await sync.syncNewListing(2024, 2)
 
+// Monitor company-specific profile update announcements (companyCode)
+await sync.syncProfileAnnouncement('BBCA')
+
 // Archive subscription right offering details (year, month)
 await sync.syncRightOffering(2024, 2)
+
+// Update comprehensive stock screener analytics data (No parameters needed)
+await sync.syncStockScreener()
 
 // Record stock split ratios and nominal changes (year, month)
 await sync.syncStockSplit(2024, 2)
@@ -190,6 +202,12 @@ await sync.syncStockSummary('20240220')
 
 // Sync general daily aggregate of all market segments (No parameters needed)
 await sync.syncTradeSummary()
+
+// Capture real-time daily price and volume snapshots for a stock (companyCode)
+await sync.syncTradingDaily('BBCA')
+
+// Sync historical trading OHLC data for a specific stock (companyCode)
+await sync.syncTradingSS('BBCA')
 ```
 
 ### **Direct API Access**
@@ -233,8 +251,12 @@ All synchronization tasks are designed to move raw API data into your local stru
 | `syncCompanyRelisting`    | Corporate    | Monitors companies returning to the exchange after a suspension/delisting period.         |
 | `syncCompanySuspend`      | Corporate    | Provides a real-time list of securities currently under trading suspension.               |
 | `syncFinancialRatio`      | Corporate    | Updates key financial indicators (PER, PBV, ROE, DER) for fundamental analysis.           |
+| `syncFinancialReport`     | Corporate    | Fetches detailed financial reporting records for a specific company.                      |
+| `syncIssuedHistory`       | Corporate    | Tracks the history of shares issued by a listed company.                                  |
 | `syncNewListing`          | Corporate    | Tracks Initial Public Offerings (IPO) and newly listed stock details.                     |
+| `syncProfileAnnouncement` | Corporate    | Synchronizes individual company profile update announcements.                             |
 | `syncRightOffering`       | Corporate    | Synchronizes detailed metadata for subscription right offerings.                          |
+| `syncStockScreener`       | Corporate    | Fetches and updates comprehensive stock screener analytics data.                          |
 | `syncStockSplit`          | Corporate    | Captures historical and planned corporate stock split ratios and nominal changes.         |
 | `syncMarketCalendar`      | General      | Synchronizes trading holidays, public events, and corporate schedules.                    |
 | `syncSecurityStock`       | General      | Updates the master list of all listed security stocks and their board types.              |
@@ -257,6 +279,8 @@ All synchronization tasks are designed to move raw API data into your local stru
 | `syncIndustryTrading`     | Trading      | Aggregates and tracks trading activity trends across different industries.                |
 | `syncStockSummary`        | Trading      | Syncs detailed daily trading stats (OHLC, Volume, Foreign Flow) for every stock.          |
 | `syncTradeSummary`        | Trading      | Synchronizes a general daily summary of total market trade activity.                      |
+| `syncTradingDaily`        | Trading      | Captures real-time daily price and volume snapshots for a stock.                          |
+| `syncTradingSS`           | Trading      | Synchronizes historical trading summary (OHLC) for a specific stock over time.            |
 
 ## API Reference
 
@@ -308,7 +332,7 @@ client.company.getCompanyProfilesDetail(companyCode, language)
 - `companyCode` `<string>`: Company ticker code (e.g., BBCA).
 - `language` `<string>`: (Optional) Language code (id-id). Defaults to `'id-id'`.
 - Returns: `Promise<Types.CompanyDetailResponse | null>`
-- Description: Returns exhaustive metadata for a specific company ticker.
+- Description: Returns detailed metadata for a specific company ticker.
 
 ### company.getDelistings
 
@@ -347,6 +371,32 @@ client.company.getFinancialRatios(year, month)
 - Returns: `Promise<Types.CompanyPaginatedResponse<Types.FinancialRatio> | null>`
 - Description: Returns paginated financial indicators.
 
+### company.getFinancialReports
+
+```typescript
+client.company.getFinancialReports(companyCode, year, period, indexFrom, pageSize)
+```
+
+- `companyCode` `<string>`: Company ticker code
+- `year` `<number>`: Target year
+- `period` `<string>`: (Optional) Fiscal period (TW1, TW2, TW3, audit). Defaults to `'audit'`.
+- `indexFrom` `<number>`: (Optional) Pagination start index. Defaults to 0.
+- `pageSize` `<number>`: (Optional) Record count limit. Defaults to 100.
+- Returns: `Promise<Types.FinancialReport[] | null>`
+- Description: Returns company financial reporting records.
+
+### company.getIssuedHistory
+
+```typescript
+client.company.getIssuedHistory(companyCode, start, length)
+```
+
+- `companyCode` `<string>`: Company ticker code
+- `start` `<number>`: (Optional) Pagination start index. Defaults to 0.
+- `length` `<number>`: (Optional) Maximum record count. Defaults to 9999.
+- Returns: `Promise<Types.IssuedHistory[] | null>`
+- Description: Record of company share issuance events.
+
 ### company.getNewListings
 
 ```typescript
@@ -359,6 +409,21 @@ client.company.getNewListings(year, month, pageSize, pageNumber)
 - `pageNumber` `<number>`: (Optional) Pagination page number. Defaults to 1.
 - Returns: `Promise<Types.CompanyPaginatedResponse<Types.NewListing> | null>`
 - Description: Returns paginated list of newly listed stocks.
+
+### company.getProfileAnnouncements
+
+```typescript
+client.company.getProfileAnnouncements(companyCode, indexFrom, pageSize, dateFrom, dateTo, language)
+```
+
+- `companyCode` `<string>`: (Optional) Company ticker filter. Defaults to `''`.
+- `indexFrom` `<number>`: (Optional) Pagination start index. Defaults to 0.
+- `pageSize` `<number>`: (Optional) Record count limit. Defaults to 10.
+- `dateFrom` `<string>`: (Optional) Start date YYYYMMDD. Defaults to `''`.
+- `dateTo` `<string>`: (Optional) End date YYYYMMDD. Defaults to `''`.
+- `language` `<string>`: (Optional) Language code (id/en). Defaults to `'id'`.
+- Returns: `Promise<Types.ProfileAnnouncement[] | null>`
+- Description: Individual records for company profile updates.
 
 ### company.getRelistingData
 
@@ -397,6 +462,17 @@ client.company.getSecuritiesStock(start, length, code, sector, board)
 - `board` `<string>`: (Optional) Board category filter. Defaults to `''`.
 - Returns: `Promise<Types.SecuritiesStockResponse | null>`
 - Description: Returns list of IDX listed companies.
+
+### company.getStockScreener
+
+```typescript
+client.company.getStockScreener(sector, subSector)
+```
+
+- `sector` `<string>`: (Optional) Sector filter. Defaults to `''`.
+- `subSector` `<string>`: (Optional) Sub-sector filter. Defaults to `''`.
+- Returns: `Promise<Types.StockScreenerResponse | null>`
+- Description: Returns stock profile metrics data.
 
 ### company.getStockSplits
 
@@ -661,6 +737,45 @@ client.trading.getTradeSummary()
 
 - Returns: `Promise<Types.TradeSummary[] | null>`
 - Description: General market segment trading aggregate data.
+
+### trading.getTradingInfoDaily
+
+```typescript
+client.trading.getTradingInfoDaily(companyCode)
+```
+
+- `companyCode` `<string>`: Company ticker code
+- Returns: `Promise<Types.TradingInfoDaily | null>`
+- Description: Price and volume data for a trading day.
+
+### trading.getTradingInfoSS
+
+```typescript
+client.trading.getTradingInfoSS(companyCode, start, length)
+```
+
+- `companyCode` `<string>`: Company ticker code
+- `start` `<number>`: (Optional) Starting record index. Defaults to 0.
+- `length` `<number>`: (Optional) Maximum record count. Defaults to 1000.
+- Returns: `Promise<Types.TradingInfoSS[] | null>`
+- Description: Historical trading summary data for a stock.
+
+## Project Structure
+
+```text
+.
+├── src/                  # Core modules and backend implementation
+│   ├── Backend/          # Task automation, schemas, and sync logic
+│   ├── Company/          # Corporate information endpoints
+│   ├── Market/           # Market and index endpoints
+│   ├── Participants/     # Broker and dealer endpoints
+│   ├── Statistics/       # Stock activity endpoints
+│   ├── Trading/          # Trading summary endpoints
+│   └── Client.ts         # Main API client wrapper
+├── tests/                # Deno unit test suites
+├── sample/               # Generator for sample documentation
+└── data/                 # SQLite database storage
+```
 
 ## License
 

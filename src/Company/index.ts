@@ -168,7 +168,7 @@ export default class CompanyModule extends BaseClient {
 
   /**
    * Fetch detailed company profile.
-   * @description Returns exhaustive metadata for a specific company ticker.
+   * @description Returns detailed metadata for a specific company ticker.
    * @param companyCode - Company ticker code (e.g., BBCA)
    * @param language - Language code (id-id)
    * @returns Detailed company profile response data
@@ -444,6 +444,119 @@ export default class CompanyModule extends BaseClient {
   }
 
   /**
+   * Fetch company financial reports.
+   * @description Returns company financial reporting records.
+   * @param companyCode - Company ticker code
+   * @param year - Target year
+   * @param period - Fiscal period (TW1, TW2, TW3, audit)
+   * @param indexFrom - Pagination start index
+   * @param pageSize - Record count limit
+   * @returns List of financial reports
+   */
+  async getFinancialReports(
+    companyCode: string,
+    year: number,
+    period: 'TW1' | 'TW2' | 'TW3' | 'audit' = 'audit',
+    indexFrom = 0,
+    pageSize = 100
+  ): Promise<Types.FinancialReport[] | null> {
+    await this.ensureSession()
+    try {
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/ListedCompany/GetFinancialReport?periode=${period}&year=${year}&indexFrom=${indexFrom}&pageSize=${pageSize}&reportType=rdf&kodeEmiten=${companyCode}`
+      )
+      const rawResponse = await response.json()
+      if (!rawResponse || !Array.isArray(rawResponse.Results)) {
+        return null
+      }
+      return rawResponse.Results.map(
+        (item: {
+          KodeEmiten: string
+          NamaEmiten: string
+          Report_Year: string
+          Report_Period: string
+          Attachments: {
+            File_ID: string
+            File_Name: string
+            File_Path: string
+            File_Size: number
+            File_Type: string
+            File_Modified: string
+          }[]
+        }) => ({
+          code: item.KodeEmiten,
+          name: item.NamaEmiten,
+          year: parseInt(item.Report_Year),
+          period: item.Report_Period,
+          attachments: item.Attachments.map(
+            (file: {
+              File_ID: string
+              File_Name: string
+              File_Path: string
+              File_Size: number
+              File_Type: string
+              File_Modified: string
+            }) => ({
+              id: file.File_ID,
+              name: file.File_Name,
+              path: file.File_Path,
+              size: file.File_Size,
+              type: file.File_Type,
+              modifiedAt: file.File_Modified
+            })
+          )
+        })
+      )
+    } catch {
+      return null
+    }
+  }
+
+  /**
+   * Fetch issued history records.
+   * @description Record of company share issuance events.
+   * @param companyCode - Company ticker code
+   * @param start - Pagination start index
+   * @param length - Maximum record count
+   * @returns List of issued shares history
+   */
+  async getIssuedHistory(
+    companyCode: string,
+    start = 0,
+    length = 9999
+  ): Promise<Types.IssuedHistory[] | null> {
+    await this.ensureSession()
+    try {
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/ListingActivity/GetIssuedHistory?kodeEmiten=${companyCode}&start=${start}&length=${length}`
+      )
+      const rawResponse = await response.json()
+      if (!rawResponse || !Array.isArray(rawResponse.data)) {
+        return null
+      }
+      return rawResponse.data.map(
+        (item: {
+          id: number
+          KodeEmiten: string
+          TanggalPencatatan: string
+          JenisTindakan: string
+          JumlahSaham: number
+          JumlahSahamSetelahTindakan: number
+        }) => ({
+          id: item.id,
+          code: item.KodeEmiten,
+          date: item.TanggalPencatatan,
+          type: item.JenisTindakan,
+          shares: item.JumlahSaham,
+          totalShares: item.JumlahSahamSetelahTindakan
+        })
+      )
+    } catch {
+      return null
+    }
+  }
+
+  /**
    * Fetch stock new listings IPO.
    * @description Returns paginated list of newly listed stocks.
    * @param year - Target year
@@ -489,6 +602,64 @@ export default class CompanyModule extends BaseClient {
         ),
         recordsTotal: rawResponse.recordsTotal
       }
+    } catch {
+      return null
+    }
+  }
+
+  /**
+   * Fetch company profile announcements.
+   * @description Individual records for company profile updates.
+   * @param companyCode - Company ticker filter
+   * @param indexFrom - Pagination start index
+   * @param pageSize - Record count limit
+   * @param dateFrom - Start date YYYYMMDD
+   * @param dateTo - End date YYYYMMDD
+   * @param language - Language code (id/en)
+   * @returns List of profile announcements
+   */
+  async getProfileAnnouncements(
+    companyCode = '',
+    indexFrom = 0,
+    pageSize = 10,
+    dateFrom = '',
+    dateTo = '',
+    language = 'id'
+  ): Promise<Types.ProfileAnnouncement[] | null> {
+    await this.ensureSession()
+    try {
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/ListedCompany/GetProfileAnnouncement?KodeEmiten=${companyCode}&indexFrom=${indexFrom}&pageSize=${pageSize}&dateFrom=${dateFrom}&dateTo=${dateTo}&lang=${language}`
+      )
+      const rawResponse = await response.json()
+      if (!rawResponse || !Array.isArray(rawResponse.Replies)) {
+        return null
+      }
+      return rawResponse.Replies.map(
+        (item: {
+          pengumuman: {
+            NoPengumuman: string
+            TglPengumuman: string
+            JudulPengumuman: string
+          }
+          attachments?: {
+            PDFFilename: string
+            FullSavePath: string
+            OriginalFilename: string
+            IsAttachment: boolean
+          }[]
+        }) => ({
+          number: item.pengumuman.NoPengumuman,
+          date: item.pengumuman.TglPengumuman,
+          title: item.pengumuman.JudulPengumuman,
+          attachments: (item.attachments || []).map((att) => ({
+            filename: att.PDFFilename,
+            url: att.FullSavePath,
+            originalName: att.OriginalFilename,
+            isAttachment: att.IsAttachment
+          }))
+        })
+      )
     } catch {
       return null
     }
@@ -623,6 +794,87 @@ export default class CompanyModule extends BaseClient {
         ),
         recordsTotal: rawResponse.recordsTotal,
         recordsFiltered: rawResponse.recordsFiltered
+      }
+    } catch {
+      return null
+    }
+  }
+
+  /**
+   * Fetch stock screener analytics.
+   * @description Returns stock profile metrics data.
+   * @param sector - Optional sector filter
+   * @param subSector - Optional sub-sector filter
+   * @returns Stock screener analytics response
+   */
+  async getStockScreener(sector = '', subSector = ''): Promise<Types.StockScreenerResponse | null> {
+    await this.ensureSession()
+    try {
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/support/stock-screener/api/v1/stock-screener/get?Sector=${sector}&SubSector=${subSector}`
+      )
+      const rawResponse = await response.json()
+      if (!rawResponse || !Array.isArray(rawResponse.results)) {
+        return null
+      }
+      return {
+        results: rawResponse.results.map(
+          (item: {
+            companyName: string
+            stockCode: string
+            subIndustryCode: string
+            sector: string
+            subSector: string
+            industry: string
+            subIndustry: string
+            marketCapital: number
+            tRevenue: number
+            npm: number
+            per: number
+            pbv: number
+            roa: number
+            roe: number
+            der: number
+            week4PC: number
+            week13PC: number
+            week26PC: number
+            week52PC: number
+            ytdpc: number
+            mtdpc: number
+            umaDate: string | null
+            notation: string | null
+            status: string | null
+            corpAction: string | null
+            corpActionDate: string | null
+          }) => ({
+            code: item.stockCode,
+            name: item.companyName,
+            subIndustryCode: item.subIndustryCode,
+            sector: item.sector,
+            subSector: item.subSector,
+            industry: item.industry,
+            subIndustry: item.subIndustry,
+            marketCapital: item.marketCapital,
+            totalRevenue: item.tRevenue,
+            npm: item.npm,
+            per: item.per,
+            pbv: item.pbv,
+            roa: item.roa,
+            roe: item.roe,
+            der: item.der,
+            week4: item.week4PC,
+            week13: item.week13PC,
+            week26: item.week26PC,
+            week52: item.week52PC,
+            ytd: item.ytdpc,
+            mtd: item.mtdpc,
+            umaDate: item.umaDate,
+            notation: item.notation,
+            status: item.status,
+            corpAction: item.corpAction,
+            corpActionDate: item.corpActionDate
+          })
+        )
       }
     } catch {
       return null

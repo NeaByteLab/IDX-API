@@ -2,7 +2,7 @@ import { sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
 /**
  * Company detail schema.
- * @description Stores exhaustive info for listed companies.
+ * @description Stores detailed info for listed companies.
  */
 export const companyDetail = sqliteTable('company_detail', {
   /** Company ticker identifier */

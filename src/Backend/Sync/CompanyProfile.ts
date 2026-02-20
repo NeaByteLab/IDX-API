@@ -5,7 +5,7 @@ import Logger from '@app/Logger.ts'
 
 /**
  * Sync company profiles.
- * @description Updates listing data with exhaustive metadata.
+ * @description Updates listing data with detailed metadata.
  * @returns Empty promise completion
  */
 export async function syncCompanyProfile(): Promise<void> {
