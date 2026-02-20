@@ -8,7 +8,7 @@ export const brokerSummary = sqliteTable('broker_summary', {
   /** Unique record identifier */
   id: integer('id').primaryKey(),
   /** Record statement date */
-  date: integer('date', { mode: 'timestamp' }).notNull(),
+  date: integer('date').notNull(),
   /** Unique firm identifier */
   brokerCode: text('broker_code').notNull(),
   /** Registered firm name */

@@ -23,15 +23,8 @@ export default class CompanyModule extends BaseClient {
   ): Promise<Types.CompanyPaginatedResponse<Types.AdditionalListing> | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_LISTING&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false&pageSize=${pageSize}&pageNumber=${pageNumber}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_LISTING&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false&pageSize=${pageSize}&pageNumber=${pageNumber}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -45,12 +38,14 @@ export default class CompanyModule extends BaseClient {
             NumOfShares: number
             Type: string
             StartDate: string
+            LastDate: string
           }) => ({
             code: item.code,
             name: item.issuerName,
             shares: item.NumOfShares,
             type: item.Type,
-            listingDate: item.StartDate
+            startDate: item.StartDate,
+            lastDate: item.LastDate
           })
         ),
         recordsTotal: rawResponse.recordsTotal
@@ -81,15 +76,8 @@ export default class CompanyModule extends BaseClient {
   ): Promise<Types.AnnouncementResponse | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/ListedCompany/GetAnnouncement?kodeEmiten=${companyCode}&indexFrom=${indexFrom}&pageSize=${pageSize}&dateFrom=${dateFrom}&dateTo=${dateTo}&lang=${language}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/ListedCompany/GetAnnouncement?kodeEmiten=${companyCode}&indexFrom=${indexFrom}&pageSize=${pageSize}&dateFrom=${dateFrom}&dateTo=${dateTo}&lang=${language}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !rawResponse.Replies) {
@@ -156,15 +144,8 @@ export default class CompanyModule extends BaseClient {
   async getCompanyProfiles(start = 0, length = 9999): Promise<Types.CompanyProfileResponse | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/ListedCompany/GetCompanyProfiles?start=${start}&length=${length}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/ListedCompany/GetCompanyProfiles?start=${start}&length=${length}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !rawResponse.data) {
@@ -198,15 +179,8 @@ export default class CompanyModule extends BaseClient {
   ): Promise<Types.CompanyDetailResponse | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/ListedCompany/GetCompanyProfilesDetail?KodeEmiten=${companyCode}&language=${language}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/ListedCompany/GetCompanyProfilesDetail?KodeEmiten=${companyCode}&language=${language}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !rawResponse.Profiles || rawResponse.Profiles.length === 0) {
@@ -307,15 +281,8 @@ export default class CompanyModule extends BaseClient {
   ): Promise<Types.CompanyPaginatedResponse<Types.Delisting> | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_DELISTING&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false&pageSize=${pageSize}&pageNumber=${pageNumber}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_DELISTING&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false&pageSize=${pageSize}&pageNumber=${pageNumber}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -326,11 +293,19 @@ export default class CompanyModule extends BaseClient {
           (item: {
             code: string
             issuerName: string
+            ListedShares: number
+            MCap: number
+            RegPrice: number
+            LastDate: string
             ListingDate: string
             DeListingDate: string
           }) => ({
             code: item.code,
             name: item.issuerName,
+            listedShares: item.ListedShares,
+            marketCap: item.MCap,
+            regularPrice: item.RegPrice,
+            lastDate: item.LastDate,
             listingDate: item.ListingDate,
             delistingDate: item.DeListingDate
           })
@@ -359,15 +334,8 @@ export default class CompanyModule extends BaseClient {
   ): Promise<Types.CompanyPaginatedResponse<Types.DividendAnnouncement> | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_DIVIDEND&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false&pageSize=${pageSize}&pageNumber=${pageNumber}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_DIVIDEND&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false&pageSize=${pageSize}&pageNumber=${pageNumber}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -413,15 +381,8 @@ export default class CompanyModule extends BaseClient {
   ): Promise<Types.CompanyPaginatedResponse<Types.FinancialRatio> | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_FINANCIAL_DATA_RATIO&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_FINANCIAL_DATA_RATIO&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -499,15 +460,8 @@ export default class CompanyModule extends BaseClient {
   ): Promise<Types.CompanyPaginatedResponse<Types.NewListing> | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_STOCK_NEW_LISTING&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false&pageSize=${pageSize}&pageNumber=${pageNumber}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_STOCK_NEW_LISTING&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false&pageSize=${pageSize}&pageNumber=${pageNumber}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -550,15 +504,8 @@ export default class CompanyModule extends BaseClient {
   async getRelistingData(pageSize = 9999, indexFrom = 0): Promise<Types.RelistingResponse | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/Home/GetRelistingData?pageSize=${pageSize}&indexFrom=${indexFrom}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/Home/GetRelistingData?pageSize=${pageSize}&indexFrom=${indexFrom}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !rawResponse.Activities) {
@@ -596,15 +543,8 @@ export default class CompanyModule extends BaseClient {
   ): Promise<Types.CompanyPaginatedResponse<Types.RightOffering> | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_RIGHT_OFFERING&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false&pageSize=${pageSize}&pageNumber=${pageNumber}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_RIGHT_OFFERING&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false&pageSize=${pageSize}&pageNumber=${pageNumber}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -658,15 +598,8 @@ export default class CompanyModule extends BaseClient {
   ): Promise<Types.SecuritiesStockResponse | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/StockData/GetSecuritiesStock?start=${start}&length=${length}&code=${code}&sector=${sector}&board=${board}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/StockData/GetSecuritiesStock?start=${start}&length=${length}&code=${code}&sector=${sector}&board=${board}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !rawResponse.data) {
@@ -713,15 +646,8 @@ export default class CompanyModule extends BaseClient {
   ): Promise<Types.CompanyPaginatedResponse<Types.StockSplit> | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_STOCK_SPLIT&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false&pageSize=${pageSize}&pageNumber=${pageNumber}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_STOCK_SPLIT&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false&pageSize=${pageSize}&pageNumber=${pageNumber}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -767,15 +693,8 @@ export default class CompanyModule extends BaseClient {
   async getSuspendData(resultCount = 9999): Promise<Types.SuspendResponse | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/Home/GetSuspendData?resultCount=${resultCount}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/Home/GetSuspendData?resultCount=${resultCount}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !rawResponse.Results) {

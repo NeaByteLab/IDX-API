@@ -10,7 +10,9 @@ export const sectoralMovement = sqliteTable('sectoral_movement', {
   /** Specific sector name string */
   name: text('name').notNull(),
   /** Performance measurement date */
-  date: integer('date', { mode: 'timestamp' }).notNull(),
+  date: integer('date').notNull(),
   /** Percentage change measurement points */
-  change: real('change').notNull()
+  change: real('change').notNull(),
+  /** Monthly period identifier */
+  period: integer('period').notNull()
 })

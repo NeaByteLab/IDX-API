@@ -12,7 +12,7 @@ export const indexSummary = sqliteTable('index_summary', {
   /** Official market index name */
   name: text('name').notNull(),
   /** Record statement date identification */
-  date: integer('date', { mode: 'timestamp' }).notNull(),
+  date: integer('date').notNull(),
   /** Previous closing index value */
   previous: real('previous'),
   /** Peak daily index value */

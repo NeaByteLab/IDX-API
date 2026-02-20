@@ -18,7 +18,7 @@ export const marketCalendar = sqliteTable('market_calendar', {
   /** Current process status step */
   step: text('step'),
   /** Event starting timestamp */
-  date: integer('date', { mode: 'timestamp' }).notNull(),
+  date: integer('date').notNull(),
   /** Agenda year numeric record */
   year: text('year')
 })

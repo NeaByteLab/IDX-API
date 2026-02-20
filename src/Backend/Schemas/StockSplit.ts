@@ -24,5 +24,7 @@ export const stockSplit = sqliteTable('stock_split', {
   /** Resulting total listed shares */
   listedShares: integer('listed_shares'),
   /** Listing date of new shares */
-  listingDate: integer('listing_date', { mode: 'timestamp' }).notNull()
+  listingDate: integer('listing_date').notNull(),
+  /** Monthly period identifier */
+  period: integer('period').notNull()
 })

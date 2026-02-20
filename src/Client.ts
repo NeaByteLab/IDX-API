@@ -5,12 +5,12 @@
 export default class BaseClient {
   /** Standard browser headers for simulation */
   protected readonly browserHeaders = {
+    Accept: 'application/json, text/plain, */*',
+    'Accept-Language': 'en-US,en;q=0.9,id;q=0.8',
+    Referer: 'https://www.idx.co.id/',
     'Upgrade-Insecure-Requests': '1',
     'User-Agent':
-      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36',
-    Referer: 'https://www.idx.co.id/',
-    Accept: 'application/json, text/plain, */*',
-    'Accept-Language': 'en-US,en;q=0.9,id;q=0.8'
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'
   }
   /** Cookies obtained from initialization */
   protected sessionCookie = ''
@@ -25,22 +25,56 @@ export default class BaseClient {
       return
     }
     try {
-      const response = await fetch('https://www.idx.co.id/id', {
-        headers: this.browserHeaders
-      })
+      const response = await this.fetcherUrl('https://www.idx.co.id/id')
       this.sessionCookie = response.headers.getSetCookie().join('; ')
       await this.wait(1000)
       await response.body?.cancel()
-      await fetch('https://www.idx.co.id/primary/home/GetIndexList', {
-        headers: {
-          ...this.browserHeaders,
-          'X-Requested-With': 'XMLHttpRequest',
-          Cookie: this.sessionCookie
-        }
-      }).then((r) => r.body?.cancel())
+      const validationResponse = await this.fetcherUrl(
+        'https://www.idx.co.id/primary/home/GetIndexList'
+      )
+      await validationResponse.body?.cancel()
     } catch (error) {
       throw error
     }
+  }
+
+  /**
+   * Universal fetcher with exponential retry.
+   * @description Handles network flakiness with automated retries.
+   * @param url - Target endpoint URI
+   * @param maxAttempts - Maximum execution retries
+   * @returns Promise resolving to response object
+   */
+  async fetcherUrl(url: string, maxAttempts = 5): Promise<Response> {
+    const headers = {
+      ...this.browserHeaders,
+      'X-Requested-With': 'XMLHttpRequest',
+      ...(this.sessionCookie ? { Cookie: this.sessionCookie } : {})
+    }
+    const attemptFetch = async (attempt: number): Promise<Response> => {
+      try {
+        const response = await fetch(url, { headers })
+        if (!response.ok && response.status >= 500) {
+          throw new Error(`Server returned ${response.status}: ${response.statusText}`)
+        }
+        return response
+      } catch (error) {
+        if (attempt >= maxAttempts) {
+          throw error
+        }
+        const delay = Math.min(1000 * Math.pow(2, attempt - 1), 15000)
+        console.warn(
+          `[Client] Fetch failed for ${url}. Retrying in ${
+            delay / 1000
+          }s (Attempt ${attempt}/${maxAttempts}). Error: ${
+            error instanceof Error ? error.message : String(error)
+          }`
+        )
+        await this.wait(delay)
+        return attemptFetch(attempt + 1)
+      }
+    }
+    return await attemptFetch(1)
   }
 
   /**

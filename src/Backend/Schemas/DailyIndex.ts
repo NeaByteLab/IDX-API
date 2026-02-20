@@ -12,5 +12,7 @@ export const dailyIndex = sqliteTable('daily_index', {
   /** Latest daily closing price */
   close: real('close').notNull(),
   /** Record statement date */
-  date: integer('date', { mode: 'timestamp' }).notNull()
+  date: integer('date').notNull(),
+  /** Monthly period identifier */
+  period: integer('period').notNull()
 })

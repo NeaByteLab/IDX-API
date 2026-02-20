@@ -8,7 +8,7 @@ export const industryTrading = sqliteTable('industry_trading', {
   /** Composite identifier: industry-date(unix) */
   id: text('id').primaryKey(),
   /** Statement record date */
-  date: integer('date', { mode: 'timestamp' }).notNull(),
+  date: integer('date').notNull(),
   /** Industry or sectoral classification name */
   industry: text('industry').notNull(),
   /** Number of member companies in industry */
@@ -26,5 +26,7 @@ export const industryTrading = sqliteTable('industry_trading', {
   /** Price to Earnings Ratio average */
   per: real('per'),
   /** Price to Book Value average */
-  pbv: real('pbv')
+  pbv: real('pbv'),
+  /** Monthly period identifier */
+  period: integer('period').notNull()
 })

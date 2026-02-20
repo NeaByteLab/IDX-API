@@ -12,7 +12,7 @@ export const stockSummary = sqliteTable('stock_summary', {
   /** Full issuer company name */
   name: text('name'),
   /** Record statement date identification */
-  date: integer('date', { mode: 'timestamp' }).notNull(),
+  date: integer('date').notNull(),
   /** Trading state special remarks */
   remarks: text('remarks'),
   /** Daily opening price value */

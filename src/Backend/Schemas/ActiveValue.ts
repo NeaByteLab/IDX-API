@@ -24,5 +24,7 @@ export const activeValue = sqliteTable('active_value', {
   /** Frequency market share percentage */
   frequencyPercent: real('frequency_percent'),
   /** Numeric active trading days */
-  tradingDays: integer('trading_days')
+  tradingDays: integer('trading_days'),
+  /** Monthly period identifier */
+  period: integer('period').notNull()
 })

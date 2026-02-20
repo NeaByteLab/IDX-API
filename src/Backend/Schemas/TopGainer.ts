@@ -1,4 +1,4 @@
-import { real, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+import { integer, real, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
 /**
  * Top gainer stocks schema.
@@ -22,5 +22,7 @@ export const topGainer = sqliteTable('top_gainer', {
   /** Absolute price change value */
   change: real('change'),
   /** Percentage price change value */
-  percentage: real('percentage')
+  percentage: real('percentage'),
+  /** Monthly period identifier */
+  period: integer('period').notNull()
 })

@@ -1,6 +1,7 @@
 import * as schemas from '@app/Backend/Schemas/index.ts'
 import ParticipantsModule from '@app/Participants/index.ts'
-import { db } from '@app/Database.ts'
+import Database from '@app/Database.ts'
+import Logger from '@app/Logger.ts'
 
 /**
  * Sync primary dealers.
@@ -8,12 +9,12 @@ import { db } from '@app/Database.ts'
  * @returns Empty promise completion
  */
 export async function syncDealerParticipant(): Promise<void> {
+  Logger.info('[Sync] Starting syncDealerParticipant...')
   const module = new ParticipantsModule()
   const result = await module.getPrimaryDealerSearch(0, 9999)
   if (result && result.data.length > 0) {
     const queries = result.data.map((item) =>
-      db
-        .insert(schemas.participantDealer)
+      Database.insert(schemas.participantDealer)
         .values({
           code: item.code,
           name: item.name,
@@ -30,5 +31,8 @@ export async function syncDealerParticipant(): Promise<void> {
         })
     )
     await Promise.all(queries)
+    Logger.info(`[Sync] Completed syncDealerParticipant. Synced ${queries.length} records.`)
+  } else {
+    Logger.warn('[Sync] No data found for syncDealerParticipant.')
   }
 }

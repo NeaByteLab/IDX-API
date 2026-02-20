@@ -15,15 +15,8 @@ export default class MarketModule extends BaseClient {
   async getCalendar(date: string): Promise<Types.CalendarResponse | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/Home/GetCalendar?range=m&date=${date}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/Home/GetCalendar?range=m&date=${date}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !rawResponse.Results) {
@@ -49,7 +42,7 @@ export default class MarketModule extends BaseClient {
             location: item.location,
             step: item.Step,
             date: item.start,
-            year: item.AgendaTahun
+            year: item.AgendaTahun || ''
           })
         )
       }
@@ -70,15 +63,8 @@ export default class MarketModule extends BaseClient {
     try {
       const queryObj = { year, month, quarter: 0, type: 'monthly' }
       const queryBase64 = btoa(JSON.stringify(queryObj))
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_DAILY_IDX_INDICES&query=${queryBase64}&isPrint=False&cumulative=false`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_DAILY_IDX_INDICES&query=${queryBase64}&isPrint=False&cumulative=false`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !rawResponse.data || !Array.isArray(rawResponse.data)) {
@@ -109,15 +95,8 @@ export default class MarketModule extends BaseClient {
   async getIndexChart(indexCode: string, period = '1D'): Promise<Types.IndexChartResponse | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/helper/GetIndexChart?indexCode=${indexCode}&period=${period}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/helper/GetIndexChart?indexCode=${indexCode}&period=${period}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !rawResponse.ChartData) {
@@ -146,13 +125,7 @@ export default class MarketModule extends BaseClient {
   async getIndexList(): Promise<Types.IndexData[] | null> {
     await this.ensureSession()
     try {
-      const response = await fetch('https://www.idx.co.id/primary/home/GetIndexList', {
-        headers: {
-          ...this.browserHeaders,
-          'X-Requested-With': 'XMLHttpRequest',
-          Cookie: this.sessionCookie
-        }
-      })
+      const response = await this.fetcherUrl('https://www.idx.co.id/primary/home/GetIndexList')
       const rawResponse = await response.json()
       if (!Array.isArray(rawResponse)) {
         return null
@@ -192,15 +165,8 @@ export default class MarketModule extends BaseClient {
     try {
       const queryObj = { year, month, quarter: 0, type: 'monthly' }
       const queryBase64 = btoa(JSON.stringify(queryObj))
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_DPS_JCI_SECTORAL_MOVEMENT&query=${queryBase64}&isPrint=False&cumulative=false`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_DPS_JCI_SECTORAL_MOVEMENT&query=${queryBase64}&isPrint=False&cumulative=false`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !rawResponse.series || !Array.isArray(rawResponse.series)) {

@@ -16,7 +16,7 @@ export const tradeSummary = sqliteTable(
     /** Total segment trade frequency */
     frequency: integer('frequency').notNull(),
     /** Record statement date identification */
-    date: integer('date', { mode: 'timestamp' }).notNull()
+    date: integer('date').notNull()
   },
   (table) => ({
     pk: primaryKey({ columns: [table.id, table.date] })

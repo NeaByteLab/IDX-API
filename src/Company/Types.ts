@@ -11,8 +11,10 @@ export interface AdditionalListing {
   shares: number
   /** Mechanism or reason for listing */
   type: string
-  /** Additional shares listing date */
-  listingDate: string
+  /** Additional shares listing start date */
+  startDate: string
+  /** Additional shares listing last date */
+  lastDate: string
 }
 
 /**
@@ -191,6 +193,14 @@ export interface Delisting {
   code: string
   /** Issuer company name */
   name: string
+  /** Total listed shares at delisting */
+  listedShares: number
+  /** Final market capitalization */
+  marketCap: number
+  /** Final regular market price */
+  regularPrice: number
+  /** Last active trading date */
+  lastDate: string
   /** Initial listing date */
   listingDate: string
   /** Delisting effect date */

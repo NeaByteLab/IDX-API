@@ -35,17 +35,9 @@ export default class StatisticModule extends BaseClient {
         return
       }
       try {
-        await fetch(featureItem.webUrl, {
-          headers: { ...this.browserHeaders, Cookie: this.sessionCookie }
-        }).then((r) => r.body?.cancel())
+        await this.fetcherUrl(featureItem.webUrl).then((r) => r.body?.cancel())
         await this.wait(500)
-        const response = await fetch(featureItem.apiUrl, {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        })
+        const response = await this.fetcherUrl(featureItem.apiUrl)
         const apiResponseJson: Types.DigitalResponse = await response.json()
         let markdownRows = ''
         if (apiResponseJson.tableChartList?.value) {

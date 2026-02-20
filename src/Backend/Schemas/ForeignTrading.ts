@@ -6,7 +6,7 @@ import { integer, real, sqliteTable } from 'drizzle-orm/sqlite-core'
  */
 export const foreignTrading = sqliteTable('foreign_trading', {
   /** Record statement date identification */
-  date: integer('date', { mode: 'timestamp' }).primaryKey(),
+  date: integer('date').primaryKey(),
   /** Aggregate buy volume */
   buyVolume: integer('buy_volume').notNull(),
   /** Aggregate buy value */
@@ -18,5 +18,7 @@ export const foreignTrading = sqliteTable('foreign_trading', {
   /** Aggregate sell value */
   sellValue: real('sell_value').notNull(),
   /** Total sell frequency */
-  sellFrequency: integer('sell_frequency').notNull()
+  sellFrequency: integer('sell_frequency').notNull(),
+  /** Monthly period identifier */
+  period: integer('period').notNull()
 })

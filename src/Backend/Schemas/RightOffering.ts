@@ -18,9 +18,11 @@ export const rightOffering = sqliteTable('right_offering', {
   /** Target numeric funds raised */
   fundRaised: real('fund_raised'),
   /** Date shares go ex-rights */
-  exerciseDate: integer('exercise_date', { mode: 'timestamp' }),
+  exerciseDate: integer('exercise_date'),
   /** Cutoff shareholders recording date */
-  recordingDate: integer('recording_date', { mode: 'timestamp' }),
+  recordingDate: integer('recording_date'),
   /** Rights trading window text */
-  tradingPeriod: text('trading_period')
+  tradingPeriod: text('trading_period'),
+  /** Monthly period identifier */
+  period: integer('period').notNull()
 })

@@ -16,15 +16,8 @@ export default class ParticipantsModule extends BaseClient {
   async getBrokerSearch(start = 0, length = 9999): Promise<Types.BrokerProfile[] | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/ExchangeMember/GetBrokerSearch?start=${start}&length=${length}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/ExchangeMember/GetBrokerSearch?start=${start}&length=${length}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -58,15 +51,8 @@ export default class ParticipantsModule extends BaseClient {
   ): Promise<Types.PaginatedResponse<Types.ParticipantProfile> | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/ExchangeMember/GetParticipantSearch?start=${start}&length=${length}&codeName=${codeOrName}&license=${license}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/ExchangeMember/GetParticipantSearch?start=${start}&length=${length}&codeName=${codeOrName}&license=${license}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -113,15 +99,8 @@ export default class ParticipantsModule extends BaseClient {
   ): Promise<Types.PaginatedResponse<Types.PrimaryDealerProfile> | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/ExchangeMember/GetPrimaryDealerSearch?start=${start}&length=${length}&codeName=${codeOrName}&license=${license}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/ExchangeMember/GetPrimaryDealerSearch?start=${start}&length=${length}&codeName=${codeOrName}&license=${license}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {

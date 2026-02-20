@@ -1,6 +1,7 @@
 import * as schemas from '@app/Backend/Schemas/index.ts'
 import ParticipantsModule from '@app/Participants/index.ts'
-import { db } from '@app/Database.ts'
+import Database from '@app/Database.ts'
+import Logger from '@app/Logger.ts'
 
 /**
  * Sync registered brokers.
@@ -8,12 +9,12 @@ import { db } from '@app/Database.ts'
  * @returns Empty promise completion
  */
 export async function syncBrokerParticipant(): Promise<void> {
+  Logger.info('[Sync] Starting syncBrokerParticipant...')
   const module = new ParticipantsModule()
   const result = await module.getBrokerSearch()
   if (result && result.length > 0) {
     const queries = result.map((item) =>
-      db
-        .insert(schemas.participantBroker)
+      Database.insert(schemas.participantBroker)
         .values({
           code: item.code,
           name: item.name,
@@ -28,5 +29,8 @@ export async function syncBrokerParticipant(): Promise<void> {
         })
     )
     await Promise.all(queries)
+    Logger.info(`[Sync] Completed syncBrokerParticipant. Synced ${queries.length} records.`)
+  } else {
+    Logger.warn('[Sync] No data found for syncBrokerParticipant.')
   }
 }

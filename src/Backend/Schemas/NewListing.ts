@@ -18,5 +18,7 @@ export const newListing = sqliteTable('new_listing', {
   /** Total numeric funds raised */
   fundRaised: real('fund_raised'),
   /** Official listing date on exchange */
-  listingDate: integer('listing_date', { mode: 'timestamp' }).notNull()
+  listingDate: integer('listing_date').notNull(),
+  /** Monthly period identifier */
+  period: integer('period').notNull()
 })

@@ -21,15 +21,8 @@ export default class TradingModule extends BaseClient {
   ): Promise<Types.TradingResponse<Types.BrokerSummary> | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/TradingSummary/GetBrokerSummary?length=${length}&start=${start}&date=${date}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/TradingSummary/GetBrokerSummary?length=${length}&start=${start}&date=${date}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !rawResponse.data) {
@@ -82,15 +75,8 @@ export default class TradingModule extends BaseClient {
         type: 'monthly'
       }
       const queryBase64 = btoa(JSON.stringify(queryObj))
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_TABLE_DAILY_TRADING_INVESTOR_DOMESTIC&query=${queryBase64}&isPrint=False&cumulative=false`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_TABLE_DAILY_TRADING_INVESTOR_DOMESTIC&query=${queryBase64}&isPrint=False&cumulative=false`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -140,15 +126,8 @@ export default class TradingModule extends BaseClient {
         type: 'monthly'
       }
       const queryBase64 = btoa(JSON.stringify(queryObj))
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_TABLE_DAILY_TRADING_INVESTOR_FOREIGN&query=${queryBase64}&isPrint=False&cumulative=false`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_TABLE_DAILY_TRADING_INVESTOR_FOREIGN&query=${queryBase64}&isPrint=False&cumulative=false`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -193,15 +172,8 @@ export default class TradingModule extends BaseClient {
   ): Promise<Types.TradingResponse<Types.IndexSummary> | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/TradingSummary/GetIndexSummary?lang=id&date=${date}&start=${start}&length=${length}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/TradingSummary/GetIndexSummary?lang=id&date=${date}&start=${start}&length=${length}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -273,15 +245,8 @@ export default class TradingModule extends BaseClient {
         type: 'monthly'
       }
       const queryBase64 = btoa(JSON.stringify(queryObj))
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_LIST_TRADING_SUMMARY_INDUSTRY_CLASSIFICATION&query=${queryBase64}&isPrint=False&cumulative=false`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_LIST_TRADING_SUMMARY_INDUSTRY_CLASSIFICATION&query=${queryBase64}&isPrint=False&cumulative=false`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -340,15 +305,8 @@ export default class TradingModule extends BaseClient {
   ): Promise<Types.ActiveStockResponse | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_MOST_ACTIVE_STOCK_FREQ&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_MOST_ACTIVE_STOCK_FREQ&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -400,15 +358,8 @@ export default class TradingModule extends BaseClient {
   ): Promise<Types.ActiveStockResponse | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_MOST_ACTIVE_STOCK_VALUE&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_MOST_ACTIVE_STOCK_VALUE&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -460,15 +411,8 @@ export default class TradingModule extends BaseClient {
   ): Promise<Types.ActiveStockResponse | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_MOST_ACTIVE_STOCK_VOLUME&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiDataPaginated?urlName=LINK_MOST_ACTIVE_STOCK_VOLUME&periodYear=${year}&periodMonth=${month}&periodType=monthly&isPrint=False&cumulative=false`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -516,15 +460,8 @@ export default class TradingModule extends BaseClient {
   async getStockSummary(date: string): Promise<Types.StockSummary[] | null> {
     await this.ensureSession()
     try {
-      const response = await fetch(
-        `https://www.idx.co.id/primary/TradingSummary/GetStockSummary?date=${date}`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/TradingSummary/GetStockSummary?date=${date}`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -627,15 +564,8 @@ export default class TradingModule extends BaseClient {
         type: 'monthly'
       }
       const queryBase64 = btoa(JSON.stringify(queryObj))
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_TOP_GAINER&query=${queryBase64}&isPrint=False&cumulative=false`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_TOP_GAINER&query=${queryBase64}&isPrint=False&cumulative=false`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -684,15 +614,8 @@ export default class TradingModule extends BaseClient {
         type: 'monthly'
       }
       const queryBase64 = btoa(JSON.stringify(queryObj))
-      const response = await fetch(
-        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_TOP_LOSER&query=${queryBase64}&isPrint=False&cumulative=false`,
-        {
-          headers: {
-            ...this.browserHeaders,
-            'X-Requested-With': 'XMLHttpRequest',
-            Cookie: this.sessionCookie
-          }
-        }
+      const response = await this.fetcherUrl(
+        `https://www.idx.co.id/primary/DigitalStatistic/GetApiData?urlName=LINK_TOP_LOSER&query=${queryBase64}&isPrint=False&cumulative=false`
       )
       const rawResponse = await response.json()
       if (!rawResponse || !Array.isArray(rawResponse.data)) {
@@ -732,13 +655,9 @@ export default class TradingModule extends BaseClient {
   async getTradeSummary(): Promise<Types.TradeSummary[] | null> {
     await this.ensureSession()
     try {
-      const response = await fetch('https://www.idx.co.id/primary/Home/GetTradeSummary?lang=id', {
-        headers: {
-          ...this.browserHeaders,
-          'X-Requested-With': 'XMLHttpRequest',
-          Cookie: this.sessionCookie
-        }
-      })
+      const response = await this.fetcherUrl(
+        'https://www.idx.co.id/primary/Home/GetTradeSummary?lang=id'
+      )
       const rawResponse = await response.json()
       if (!Array.isArray(rawResponse)) {
         return null

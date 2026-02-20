@@ -10,5 +10,5 @@ export const companyRelisting = sqliteTable('company_relisting', {
   /** Full issuer company name */
   name: text('name').notNull(),
   /** Official relisting date */
-  listingDate: integer('listing_date', { mode: 'timestamp' }).notNull()
+  listingDate: integer('listing_date').notNull()
 })

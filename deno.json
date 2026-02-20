@@ -85,7 +85,8 @@
     "discover": "deno run --allow-net --allow-read --allow-write src/index.ts",
     "test": "deno fmt tests/ && deno lint tests/ && deno test --allow-net --allow-write --allow-read --no-check",
     "db:generate": "deno run -A npm:drizzle-kit generate",
-    "db:push": "deno run -A npm:drizzle-kit push"
+    "db:push": "deno run -A npm:drizzle-kit push",
+    "db:sync": "deno task db:generate --config drizzle.config.json && deno task db:push --config drizzle.config.json &&  deno run -A npm:drizzle-kit push --force"
   },
   "imports": {
     "@db/sqlite": "jsr:@db/sqlite@^0.13.0",

@@ -10,7 +10,7 @@ export const companyAnnouncement = sqliteTable('company_announcement', {
   /** Official announcement number */
   number: text('number').notNull(),
   /** Posting date string */
-  date: text('date').notNull(),
+  date: integer('date').notNull(),
   /** Announcement title text */
   title: text('title').notNull(),
   /** Announcement type category */
@@ -18,7 +18,7 @@ export const companyAnnouncement = sqliteTable('company_announcement', {
   /** Associated company ticker */
   companyCode: text('company_code').notNull(),
   /** Record creation date */
-  createdDate: text('created_date').notNull(),
+  createdDate: integer('created_date').notNull(),
   /** Internal form identifier */
   formId: text('form_id').notNull(),
   /** Announcement subject description */

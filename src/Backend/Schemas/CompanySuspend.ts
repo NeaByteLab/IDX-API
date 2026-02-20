@@ -12,7 +12,7 @@ export const companySuspend = sqliteTable('company_suspend', {
   /** Detailed suspension title */
   title: text('title'),
   /** Suspension event timestamp */
-  date: integer('date', { mode: 'timestamp' }).notNull(),
+  date: integer('date').notNull(),
   /** Action type: Suspend or Unsuspend */
   type: text('type'),
   /** Link to original announcement PDF */

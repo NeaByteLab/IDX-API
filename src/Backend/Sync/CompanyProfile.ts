@@ -1,6 +1,7 @@
 import * as schemas from '@app/Backend/Schemas/index.ts'
 import CompanyModule from '@app/Company/index.ts'
-import { db } from '@app/Database.ts'
+import Database from '@app/Database.ts'
+import Logger from '@app/Logger.ts'
 
 /**
  * Sync company profiles.
@@ -8,15 +9,16 @@ import { db } from '@app/Database.ts'
  * @returns Empty promise completion
  */
 export async function syncCompanyProfile(): Promise<void> {
+  Logger.info('[Sync] Starting syncCompanyProfile...')
   const module = new CompanyModule()
   const result = await module.getCompanyProfiles()
   if (!result || result.data.length === 0) {
+    Logger.warn('[Sync] No data found for syncCompanyProfile.')
     return
   }
   const profileQueries = result.data.map((item) => {
     const listingDate = item.listingDate ? new Date(item.listingDate) : null
-    return db
-      .insert(schemas.companyProfile)
+    return Database.insert(schemas.companyProfile)
       .values({ code: item.code, name: item.name, listingDate })
       .onConflictDoUpdate({
         target: schemas.companyProfile.code,
@@ -24,6 +26,9 @@ export async function syncCompanyProfile(): Promise<void> {
       })
   })
   await Promise.all(profileQueries)
+  Logger.info(
+    `[Sync] Completed syncCompanyProfile list. Synced ${profileQueries.length} records. Starting details sync...`
+  )
   /**
    * Fetch company details.
    * @description Processes companies one by one sequentially.
@@ -60,7 +65,7 @@ export async function syncCompanyProfile(): Promise<void> {
         shareholders: JSON.stringify(detail.shareholders),
         subsidiaries: JSON.stringify(detail.subsidiaries)
       }
-      await db.insert(schemas.companyDetail).values(values).onConflictDoUpdate({
+      await Database.insert(schemas.companyDetail).values(values).onConflictDoUpdate({
         target: schemas.companyDetail.code,
         set: values
       })
@@ -69,4 +74,5 @@ export async function syncCompanyProfile(): Promise<void> {
     return await syncDetails(index + 1)
   }
   await syncDetails(0)
+  Logger.info('[Sync] Completed syncCompanyProfile.')
 }

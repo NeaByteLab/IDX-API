@@ -5,8 +5,8 @@ import { integer, real, sqliteTable, text } from 'drizzle-orm/sqlite-core'
  * @description Performance indicators from financial reports.
  */
 export const financialRatio = sqliteTable('financial_ratio', {
-  /** Auto-increment record identifier */
-  id: integer('id').primaryKey(),
+  /** Record identifier (code-period) */
+  id: text('id').primaryKey(),
   /** Company ticker identifier */
   code: text('code').notNull(),
   /** Full issuer company name */
@@ -20,7 +20,7 @@ export const financialRatio = sqliteTable('financial_ratio', {
   /** Specific sub-industry category */
   subIndustry: text('sub_industry'),
   /** Financial reporting date/period */
-  period: integer('period', { mode: 'timestamp' }).notNull(),
+  period: integer('period').notNull(),
   /** Total asset value */
   assets: real('assets'),
   /** Total liability value */

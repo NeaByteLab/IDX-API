@@ -10,7 +10,7 @@ export const indexChart = sqliteTable('index_chart', {
   /** Identification code for the index */
   code: text('code').notNull(),
   /** Chart data point timestamp */
-  date: integer('date', { mode: 'timestamp' }).notNull(),
+  date: integer('date').notNull(),
   /** Recorded numeric index value */
   value: real('value').notNull()
 })
